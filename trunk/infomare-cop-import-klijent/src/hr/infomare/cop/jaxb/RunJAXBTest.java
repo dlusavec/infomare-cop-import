@@ -21,12 +21,12 @@ public class RunJAXBTest {
             context = JAXBContext.newInstance(OpObrasci.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
             OpObrasci opObrasci = (OpObrasci) unmarshaller.unmarshal(datoteka);
-            System.err.println("Poslodavac");
-            Pomocna.debugObjekta(opObrasci.getPoslodavac());
-            /*System.err.println("Zaposlenik 1");
+            /*System.err.println("Poslodavac");
+            Pomocna.debugObjekta(opObrasci.getPoslodavac());*/
+            System.err.println("Zaposlenik 1");
             Pomocna.debugObjekta(opObrasci.getZaposlenik().get(0));
             System.err.println("Zaposlenik 2");
-            Pomocna.debugObjekta(opObrasci.getZaposlenik().get(1));  */          
+            Pomocna.debugObjekta(opObrasci.getZaposlenik().get(1));            
         } catch (JAXBException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

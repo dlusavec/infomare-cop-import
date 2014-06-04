@@ -9,7 +9,7 @@ public class Pomocna {
 
     public static void debugObjekta(Object object) {
         if (object == null) {
-            System.err.println("Ispis objekta null reference...");
+            System.err.println("Debug null referenca!!!");
         } else {
             Class klasa = object.getClass();
             Field[] polja = klasa.getDeclaredFields();

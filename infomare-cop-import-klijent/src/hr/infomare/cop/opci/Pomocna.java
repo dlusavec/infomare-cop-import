@@ -7,7 +7,7 @@ public class Pomocna {
         super();
     }
 
-    public static void debugObjekta(Object object) {
+    public synchronized static void  debugObjekta(Object object) {
         if (object == null) {
             System.err.println("Debug null referenca!!!");
         } else {

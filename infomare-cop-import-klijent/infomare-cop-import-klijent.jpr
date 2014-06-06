@@ -45,11 +45,20 @@
       <string v="oracle.toplink.workbench.addin/toplinkContentSet"/>
    </list>
    <value n="defaultPackage" v="hr.infomare.cop"/>
+   <hash n="ejbModuleContainer">
+      <value n="dbConnection" v="COP_konekcija"/>
+      <value n="ejbVersion" v="3.0"/>
+      <value n="ejbVersionMinor" v="0.1"/>
+   </hash>
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
          <string v="Database"/>
+         <string v="EJB"/>
+         <string v="EJB-Modeling"/>
          <string v="Java"/>
+         <string v="Java-Modeling"/>
          <string v="TopLink"/>
+         <string v="UML"/>
          <string v="XML"/>
          <string v="XML_SCHEMA"/>
       </list>
@@ -72,7 +81,28 @@
             <value n="id" v="Oracle XML Parser v2"/>
             <value n="isJDK" v="false"/>
          </hash>
+         <hash>
+            <value n="id" v="Jt400.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Java EE"/>
+            <value n="isJDK" v="false"/>
+         </hash>
       </list>
+      <hash n="internalDefinitions">
+         <list n="libraryDefinitions">
+            <hash>
+               <list n="classPath">
+                  <url path="../../../Users/ivanj/Desktop/MUP/DB2_JDBC/DB2_JDBC/jt400.jar" jar-entry=""/>
+               </list>
+               <value n="deployedByDefault" v="true"/>
+               <value n="description" v="Jt400.jar"/>
+               <value n="id" v="Jt400.jar"/>
+               <value n="locked" v="true"/>
+            </hash>
+         </list>
+      </hash>
       <list n="libraryReferences">
          <hash>
             <value n="id" v="TopLink"/>
@@ -82,9 +112,27 @@
             <value n="id" v="Oracle XML Parser v2"/>
             <value n="isJDK" v="false"/>
          </hash>
+         <hash>
+            <value n="id" v="Jt400.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Java EE"/>
+            <value n="isJDK" v="false"/>
+         </hash>
       </list>
    </hash>
    <hash n="oracle.jdevimpl.config.JProjectPaths">
       <url n="outputDirectory" path="classes/"/>
+   </hash>
+   <hash n="oracle.toplink.workbench.addin">
+      <hash n="persistence-list">
+         <value n="jpa-version" v="2.0"/>
+         <hash n="src$META-INF$persistence.xml">
+            <hash n="infomare-cop-import-klijent">
+               <value n="development-database" v="COP_konekcija"/>
+            </hash>
+         </hash>
+      </hash>
    </hash>
 </jpr:project>

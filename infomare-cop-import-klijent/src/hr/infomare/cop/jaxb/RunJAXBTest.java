@@ -4,6 +4,8 @@ import hr.infomare.cop.opci.Pomocna;
 
 import java.io.File;
 
+import java.util.List;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -20,13 +22,18 @@ public class RunJAXBTest {
         try {
             context = JAXBContext.newInstance(OpObrasci.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
-            OpObrasci opObrasci = (OpObrasci) unmarshaller.unmarshal(datoteka);
+            OpObrasci opObrasci = (OpObrasci) unmarshaller.unmarshal(datoteka);            
+            
             /*System.err.println("Poslodavac");
             Pomocna.debugObjekta(opObrasci.getPoslodavac());*/
-            System.err.println("Zaposlenik 1");
-            Pomocna.debugObjekta(opObrasci.getZaposlenik().get(0));
-            System.err.println("Zaposlenik 2");
-            Pomocna.debugObjekta(opObrasci.getZaposlenik().get(1));            
+            List<ZaposlenikType> lista = opObrasci.getZaposlenik();
+            int i = 1;
+            for (ZaposlenikType zaposlenikType : lista) {
+                System.err.println("Zaposlenik " + i);
+                Pomocna.debugObjekta(zaposlenikType);
+                ++i;
+            }
+
         } catch (JAXBException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

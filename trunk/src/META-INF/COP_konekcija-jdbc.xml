@@ -1,0 +1,24 @@
+<?xml version = '1.0' encoding = 'windows-1250'?>
+<jdbc-data-source xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://xmlns.oracle.com/weblogic/jdbc-data-source http://xmlns.oracle.com/weblogic/jdbc-data-source/1.0/jdbc-data-source.xsd"
+                  xmlns="http://xmlns.oracle.com/weblogic/jdbc-data-source">
+    <name>COP_konekcija</name>
+    <jdbc-driver-params>
+        <url>jdbc:as400://s655cb5b.infomare.hr;</url>
+        <driver-name>com.ibm.as400.access.AS400JDBCDriver</driver-name>
+        <properties>
+            <property>
+                <name>user</name>
+                <value>COPUSER</value>
+            </property>
+        </properties>
+        <password-encrypted>E887458432872BD20754518003885B08</password-encrypted>
+    </jdbc-driver-params>
+    <jdbc-connection-pool-params>
+        <test-table-name>SQL SELECT 1</test-table-name>
+    </jdbc-connection-pool-params>
+    <jdbc-data-source-params>
+        <jndi-name>jdbc/COP_konekcijaDS</jndi-name>
+        <scope>Application</scope>
+    </jdbc-data-source-params>
+</jdbc-data-source>

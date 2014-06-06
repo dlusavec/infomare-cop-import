@@ -71,6 +71,15 @@
       <value n="j2eeWebAppName" v="infomare-cop-import-infomare-cop-import-klijent-webapp"/>
       <value n="j2eeWebContextRoot" v="infomare-cop-import-infomare-cop-import-klijent-context-root"/>
    </hash>
+   <hash n="oracle.jdeveloper.runner.RunConfigurations">
+      <hash n="runConfigurationDefinitions">
+         <hash n="Default">
+            <value n="custom" v="false"/>
+            <value n="name" v="Default"/>
+            <url n="targetURL" path="src/hr/infomare/cop/app/Run.java"/>
+         </hash>
+      </hash>
+   </hash>
    <hash n="oracle.jdevimpl.config.JProjectLibraries">
       <list n="exportedReferences">
          <hash>

@@ -2,19 +2,23 @@ package hr.infomare.cop.db;
 
 import java.io.Serializable;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "Zaprac.findAll", query = "select o from Zaprac o") })
 @IdClass(ZapracPK.class)
+@Table(schema = "COPDB")
 public class Zaprac implements Serializable {
     private static final long serialVersionUID = -927155380376703878L;
-    private Long iznos;
+    private BigDecimal iznos;
     @Id
     @Column(nullable = false)
     private int obrid;
@@ -32,7 +36,7 @@ public class Zaprac implements Serializable {
     public Zaprac() {
     }
 
-    public Zaprac(Long iznos, int obrid, String racunban, String racunzap, int rbr, int stv) {
+    public Zaprac(BigDecimal iznos, int obrid, String racunban, String racunzap, int rbr, int stv) {
         this.iznos = iznos;
         this.obrid = obrid;
         this.racunban = racunban;
@@ -41,11 +45,11 @@ public class Zaprac implements Serializable {
         this.stv = stv;
     }
 
-    public Long getIznos() {
+    public BigDecimal getIznos() {
         return iznos;
     }
 
-    public void setIznos(Long iznos) {
+    public void setIznos(BigDecimal iznos) {
         this.iznos = iznos;
     }
 

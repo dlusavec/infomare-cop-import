@@ -23,5 +23,7 @@
       <property name="javax.persistence.jdbc.url" value="jdbc:as400://s655cb5b.infomare.hr;"/>
       <property name="javax.persistence.jdbc.user" value="COPUSER"/>
     </properties>
+
+
   </persistence-unit>
 </persistence>

@@ -7,9 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "Obracun.findAll", query = "select o from Obracun o") })
+@Table(schema = "COPDB")
 public class Obracun implements Serializable {
     private static final long serialVersionUID = 7664925003666898483L;
     private Integer k50god;

@@ -2,20 +2,24 @@ package hr.infomare.cop.db;
 
 import java.io.Serializable;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "Obustava.findAll", query = "select o from Obustava o") })
 @IdClass(ObustavaPK.class)
+@Table(schema = "COPDB")
 public class Obustava implements Serializable {
     private static final long serialVersionUID = -7572052302026979576L;
     @Column(nullable = false)
-    private Long iznos;
+    private BigDecimal iznos;
     @Column(nullable = false)
     private String naziv;
     @Id
@@ -26,12 +30,12 @@ public class Obustava implements Serializable {
     @Column(nullable = false)
     private String opis;
     private Integer ostrata;
-    private Long posto;
+    private BigDecimal posto;
     @Id
     @Column(nullable = false)
     private int rbr;
     @Column(nullable = false)
-    private Long saldo;
+    private BigDecimal saldo;
     @Id
     @Column(nullable = false)
     private int stv;
@@ -39,8 +43,8 @@ public class Obustava implements Serializable {
     public Obustava() {
     }
 
-    public Obustava(Long iznos, String naziv, int obrid, int obustava, String opis, Integer ostrata, Long posto,
-                    int rbr, Long saldo, int stv) {
+    public Obustava(BigDecimal iznos, String naziv, int obrid, int obustava, String opis, Integer ostrata, BigDecimal posto,
+                    int rbr, BigDecimal saldo, int stv) {
         this.iznos = iznos;
         this.naziv = naziv;
         this.obrid = obrid;
@@ -53,11 +57,11 @@ public class Obustava implements Serializable {
         this.stv = stv;
     }
 
-    public Long getIznos() {
+    public BigDecimal getIznos() {
         return iznos;
     }
 
-    public void setIznos(Long iznos) {
+    public void setIznos(BigDecimal iznos) {
         this.iznos = iznos;
     }
 
@@ -101,11 +105,11 @@ public class Obustava implements Serializable {
         this.ostrata = ostrata;
     }
 
-    public Long getPosto() {
+    public BigDecimal getPosto() {
         return posto;
     }
 
-    public void setPosto(Long posto) {
+    public void setPosto(BigDecimal posto) {
         this.posto = posto;
     }
 
@@ -117,11 +121,11 @@ public class Obustava implements Serializable {
         this.rbr = rbr;
     }
 
-    public Long getSaldo() {
+    public BigDecimal getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(Long saldo) {
+    public void setSaldo(BigDecimal saldo) {
         this.saldo = saldo;
     }
 

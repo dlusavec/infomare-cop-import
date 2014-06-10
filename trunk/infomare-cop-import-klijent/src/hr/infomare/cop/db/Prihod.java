@@ -2,22 +2,26 @@ package hr.infomare.cop.db;
 
 import java.io.Serializable;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "Prihod.findAll", query = "select o from Prihod o") })
 @IdClass(PrihodPK.class)
+@Table(schema = "COPDB")
 public class Prihod implements Serializable {
     private static final long serialVersionUID = -1230276821269286219L;
     private String internauj;
     @Column(nullable = false)
-    private Long iznos;
-    private Long koef;
+    private BigDecimal iznos;
+    private BigDecimal koef;
     @Column(nullable = false)
     private String naziv;
     private String nazivuj;
@@ -26,13 +30,13 @@ public class Prihod implements Serializable {
     @Id
     @Column(nullable = false)
     private int obrid;
-    private Long osnovica;
+    private BigDecimal osnovica;
     @Column(nullable = false)
     private int prihod;
     @Id
     @Column(nullable = false)
     private int rbr;
-    private Long sati;
+    private BigDecimal sati;
     @Id
     @Column(nullable = false)
     private int stv;
@@ -40,8 +44,8 @@ public class Prihod implements Serializable {
     public Prihod() {
     }
 
-    public Prihod(String internauj, Long iznos, Long koef, String naziv, String nazivuj, String neoporez, int obrid,
-                  Long osnovica, int prihod, int rbr, Long sati, int stv) {
+    public Prihod(String internauj, BigDecimal iznos, BigDecimal koef, String naziv, String nazivuj, String neoporez, int obrid,
+                  BigDecimal osnovica, int prihod, int rbr, BigDecimal sati, int stv) {
         this.internauj = internauj;
         this.iznos = iznos;
         this.koef = koef;
@@ -64,19 +68,19 @@ public class Prihod implements Serializable {
         this.internauj = internauj;
     }
 
-    public Long getIznos() {
+    public BigDecimal getIznos() {
         return iznos;
     }
 
-    public void setIznos(Long iznos) {
+    public void setIznos(BigDecimal iznos) {
         this.iznos = iznos;
     }
 
-    public Long getKoef() {
+    public BigDecimal getKoef() {
         return koef;
     }
 
-    public void setKoef(Long koef) {
+    public void setKoef(BigDecimal koef) {
         this.koef = koef;
     }
 
@@ -112,11 +116,11 @@ public class Prihod implements Serializable {
         this.obrid = obrid;
     }
 
-    public Long getOsnovica() {
+    public BigDecimal getOsnovica() {
         return osnovica;
     }
 
-    public void setOsnovica(Long osnovica) {
+    public void setOsnovica(BigDecimal osnovica) {
         this.osnovica = osnovica;
     }
 
@@ -136,11 +140,11 @@ public class Prihod implements Serializable {
         this.rbr = rbr;
     }
 
-    public Long getSati() {
+    public BigDecimal getSati() {
         return sati;
     }
 
-    public void setSati(Long sati) {
+    public void setSati(BigDecimal sati) {
         this.sati = sati;
     }
 

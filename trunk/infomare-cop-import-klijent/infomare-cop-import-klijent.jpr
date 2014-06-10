@@ -91,10 +91,6 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="Jt400.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
             <value n="id" v="Java EE"/>
             <value n="isJDK" v="false"/>
          </hash>
@@ -102,19 +98,13 @@
             <value n="id" v="AbsoluteLayout"/>
             <value n="isJDK" v="false"/>
          </hash>
+         <hash>
+            <url n="id" path="../../../Users/ivanj/AppData/Roaming/JDeveloper/system12.1.2.0.40.66.68/o.jdeveloper/Jt400.library"/>
+            <value n="isJDK" v="false"/>
+         </hash>
       </list>
       <hash n="internalDefinitions">
-         <list n="libraryDefinitions">
-            <hash>
-               <list n="classPath">
-                  <url path="../../../Users/ivanj/Desktop/MUP/DB2_JDBC/DB2_JDBC/jt400.jar" jar-entry=""/>
-               </list>
-               <value n="deployedByDefault" v="true"/>
-               <value n="description" v="Jt400.jar"/>
-               <value n="id" v="Jt400.jar"/>
-               <value n="locked" v="true"/>
-            </hash>
-         </list>
+         <list n="libraryDefinitions"/>
       </hash>
       <list n="libraryReferences">
          <hash>
@@ -126,15 +116,15 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="Jt400.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
             <value n="id" v="Java EE"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
             <value n="id" v="AbsoluteLayout"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <url n="id" path="../../../Users/ivanj/AppData/Roaming/JDeveloper/system12.1.2.0.40.66.68/o.jdeveloper/Jt400.library"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>

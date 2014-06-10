@@ -51,6 +51,11 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+
+import javax.swing.JMenuItem;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -426,6 +431,10 @@ public class Forma extends javax.swing.JPanel {
               }   
           });
         
+        
+    
+
+        
     }
 
     /** This method is called from within the constructor to
@@ -443,8 +452,10 @@ public class Forma extends javax.swing.JPanel {
 
         setMaximumSize(new java.awt.Dimension(536, 365));
         setMinimumSize(new java.awt.Dimension(536, 365));
+        setPreferredSize(new java.awt.Dimension(860, 390));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtXml.setEditable(false);
         txtXml.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         add(txtXml, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 700, -1));
 
@@ -460,7 +471,7 @@ public class Forma extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(0, 0, 255));
         jLabel1.setText("XML datoteka");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
-        add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 820, 20));
+        add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 820, 30));
     }//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

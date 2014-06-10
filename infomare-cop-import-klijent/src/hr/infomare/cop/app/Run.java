@@ -29,6 +29,12 @@ import hr.infomare.cop.opci.Pomocna;
 import java.awt.CardLayout;
 import java.awt.Window;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -36,7 +42,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import org.netbeans.lib.awtextra.AbsoluteLayout;
 
-public class Run {
+public class Run{
     
     public static JFrame frm;
     
@@ -56,17 +62,29 @@ public class Run {
         frm.setLocationRelativeTo(null);
     }  
         
-  
           
 
     public static void main(String[] args) throws JAXBException, ClassNotFoundException, InstantiationException,
                                                   IllegalAccessException, UnsupportedLookAndFeelException {
         
-          
         
+        frm = new JFrame("Cop import");      
         
-        frm = new JFrame("Cop import");    
-
+        JMenuBar menuBar = new JMenuBar();
+        
+            JMenu programMenu = new JMenu("Program");
+                JMenuItem closeMenuItem = new JMenuItem("Izlaz");
+                closeMenuItem.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent event) {
+                            System.exit(0);
+                        }});
+            programMenu.add(closeMenuItem);
+        
+        menuBar.add(programMenu);
+        
+        frm.setJMenuBar(menuBar);
+        
+                
 
         cards = new JPanel(new MCardLayout());
             login = new Login();
@@ -86,13 +104,13 @@ public class Run {
             promijeniCard("Forma");
         else promijeniCard("Login");
      
-        /*
-        UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+        
+        UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         for(Window window : JFrame.getWindows()) {
                 SwingUtilities.updateComponentTreeUI(window);
             }
 
-         * */
+         
 
         frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frm.setResizable(false);

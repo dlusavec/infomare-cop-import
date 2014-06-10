@@ -36,7 +36,7 @@ public class Login extends javax.swing.JPanel {
 
         setMaximumSize(new java.awt.Dimension(255, 125));
         setMinimumSize(new java.awt.Dimension(255, 125));
-        setPreferredSize(new java.awt.Dimension(307, 134));
+        setPreferredSize(new java.awt.Dimension(295, 130));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnSpremi.setText("Spremi");
@@ -57,6 +57,7 @@ public class Login extends javax.swing.JPanel {
         txtServer.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         txtServer.setMargin(new java.awt.Insets(0, 0, 0, 0));
         txtServer.setMaximumSize(null);
+        txtServer.setPreferredSize(new java.awt.Dimension(4, 20));
         add(txtServer, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 154, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -72,6 +73,7 @@ public class Login extends javax.swing.JPanel {
         txtKorisnik.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         txtKorisnik.setMargin(new java.awt.Insets(0, 0, 0, 0));
         txtKorisnik.setMaximumSize(new java.awt.Dimension(4, 19));
+        txtKorisnik.setPreferredSize(new java.awt.Dimension(4, 20));
         add(txtKorisnik, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 154, -1));
 
         txtLozinka.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -83,7 +85,7 @@ public class Login extends javax.swing.JPanel {
                 btnOdustaniActionPerformed(evt);
             }
         });
-        add(btnOdustani, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
+        add(btnOdustani, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
     }//GEN-END:initComponents
 
     private void btnOdustaniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOdustaniActionPerformed

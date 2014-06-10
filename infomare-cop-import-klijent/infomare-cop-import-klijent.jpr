@@ -98,6 +98,10 @@
             <value n="id" v="Java EE"/>
             <value n="isJDK" v="false"/>
          </hash>
+         <hash>
+            <value n="id" v="AbsoluteLayout"/>
+            <value n="isJDK" v="false"/>
+         </hash>
       </list>
       <hash n="internalDefinitions">
          <list n="libraryDefinitions">
@@ -127,6 +131,10 @@
          </hash>
          <hash>
             <value n="id" v="Java EE"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="AbsoluteLayout"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>

@@ -36,6 +36,7 @@ public class Login extends javax.swing.JPanel {
 
         setMaximumSize(new java.awt.Dimension(255, 125));
         setMinimumSize(new java.awt.Dimension(255, 125));
+        setPreferredSize(new java.awt.Dimension(255, 125));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnSpremi.setText("Spremi");

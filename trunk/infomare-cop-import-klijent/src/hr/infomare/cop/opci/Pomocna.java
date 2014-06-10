@@ -138,6 +138,6 @@ public class Pomocna {
     }
     
     public static void porukaError(Component c,String poruka){
-        JOptionPane.showMessageDialog(c,poruka,"Greša",JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(c,poruka,"Greška",JOptionPane.ERROR_MESSAGE);
     }
 }

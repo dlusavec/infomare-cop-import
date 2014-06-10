@@ -2,22 +2,26 @@ package hr.infomare.cop.db;
 
 import java.io.Serializable;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "Olaksica.findAll", query = "select o from Olaksica o") })
 @IdClass(OlaksicaPK.class)
+@Table(schema = "COPDB")
 public class Olaksica implements Serializable {
     private static final long serialVersionUID = -1402920073306529068L;
     @Column(nullable = false)
-    private Long iznos;
+    private BigDecimal iznos;
     @Column(nullable = false)
-    private Long koeficijent;
+    private BigDecimal koeficijent;
     @Column(nullable = false)
     private String naziv;
     @Id
@@ -35,7 +39,7 @@ public class Olaksica implements Serializable {
     public Olaksica() {
     }
 
-    public Olaksica(Long iznos, Long koeficijent, String naziv, int obrid, int olaksica, int rbr, int stv) {
+    public Olaksica(BigDecimal iznos, BigDecimal koeficijent, String naziv, int obrid, int olaksica, int rbr, int stv) {
         this.iznos = iznos;
         this.koeficijent = koeficijent;
         this.naziv = naziv;
@@ -45,19 +49,19 @@ public class Olaksica implements Serializable {
         this.stv = stv;
     }
 
-    public Long getIznos() {
+    public BigDecimal getIznos() {
         return iznos;
     }
 
-    public void setIznos(Long iznos) {
+    public void setIznos(BigDecimal iznos) {
         this.iznos = iznos;
     }
 
-    public Long getKoeficijent() {
+    public BigDecimal getKoeficijent() {
         return koeficijent;
     }
 
-    public void setKoeficijent(Long koeficijent) {
+    public void setKoeficijent(BigDecimal koeficijent) {
         this.koeficijent = koeficijent;
     }
 

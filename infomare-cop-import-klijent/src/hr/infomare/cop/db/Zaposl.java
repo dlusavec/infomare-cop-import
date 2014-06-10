@@ -2,6 +2,8 @@ package hr.infomare.cop.db;
 
 import java.io.Serializable;
 
+import java.math.BigDecimal;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,62 +12,64 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "Zaposl.findAll", query = "select o from Zaposl o") })
 @IdClass(ZaposlPK.class)
+@Table(schema = "COPDB")
 public class Zaposl implements Serializable {
     private static final long serialVersionUID = -2374476838603511025L;
     private String adresa;
     @Column(nullable = false)
-    private Long bruto;
+    private BigDecimal bruto;
     @Temporal(TemporalType.DATE)
     private Date datumisp;
     @Column(nullable = false)
-    private Long dohodak;
+    private BigDecimal dohodak;
     @Column(nullable = false)
-    private Long dopriz;
+    private BigDecimal dopriz;
     @Column(nullable = false)
     private String ime;
     private String internauj;
     @Column(nullable = false)
-    private Long isplata;
+    private BigDecimal isplata;
     private String nazivoj;
     @Column(nullable = false)
-    private Long neoporez;
+    private BigDecimal neoporez;
     @Column(nullable = false)
-    private Long neto;
+    private BigDecimal neto;
     @Id
     @Column(nullable = false)
     private int obrid;
     @Column(nullable = false)
-    private Long obustave;
+    private BigDecimal obustave;
     @Column(nullable = false)
     private String oib;
     @Column(nullable = false)
-    private Long olaksica;
+    private BigDecimal olaksica;
     @Column(nullable = false)
-    private Long porezosn;
+    private BigDecimal porezosn;
     @Column(nullable = false)
-    private Long poripri;
+    private BigDecimal poripri;
     @Column(nullable = false)
     private String prezime;
     @Column(nullable = false)
-    private Long primanja;
+    private BigDecimal primanja;
     @Id
     @Column(nullable = false)
     private int rbr;
     @Column(nullable = false)
-    private Long trosakpl;
+    private BigDecimal trosakpl;
 
     public Zaposl() {
     }
 
-    public Zaposl(String adresa, Long bruto, Date datumisp, Long dohodak, Long dopriz, String ime, String internauj,
-                  Long isplata, String nazivoj, Long neoporez, Long neto, int obrid, Long obustave, String oib,
-                  Long olaksica, Long porezosn, Long poripri, String prezime, Long primanja, int rbr, Long trosakpl) {
+    public Zaposl(String adresa, BigDecimal bruto, Date datumisp, BigDecimal dohodak, BigDecimal dopriz, String ime, String internauj,
+                  BigDecimal isplata, String nazivoj, BigDecimal neoporez, BigDecimal neto, int obrid, BigDecimal obustave, String oib,
+                  BigDecimal olaksica, BigDecimal porezosn, BigDecimal poripri, String prezime, BigDecimal primanja, int rbr, BigDecimal trosakpl) {
         this.adresa = adresa;
         this.bruto = bruto;
         this.datumisp = datumisp;
@@ -97,11 +101,11 @@ public class Zaposl implements Serializable {
         this.adresa = adresa;
     }
 
-    public Long getBruto() {
+    public BigDecimal getBruto() {
         return bruto;
     }
 
-    public void setBruto(Long bruto) {
+    public void setBruto(BigDecimal bruto) {
         this.bruto = bruto;
     }
 
@@ -113,19 +117,19 @@ public class Zaposl implements Serializable {
         this.datumisp = datumisp;
     }
 
-    public Long getDohodak() {
+    public BigDecimal getDohodak() {
         return dohodak;
     }
 
-    public void setDohodak(Long dohodak) {
+    public void setDohodak(BigDecimal dohodak) {
         this.dohodak = dohodak;
     }
 
-    public Long getDopriz() {
+    public BigDecimal getDopriz() {
         return dopriz;
     }
 
-    public void setDopriz(Long dopriz) {
+    public void setDopriz(BigDecimal dopriz) {
         this.dopriz = dopriz;
     }
 
@@ -145,11 +149,11 @@ public class Zaposl implements Serializable {
         this.internauj = internauj;
     }
 
-    public Long getIsplata() {
+    public BigDecimal getIsplata() {
         return isplata;
     }
 
-    public void setIsplata(Long isplata) {
+    public void setIsplata(BigDecimal isplata) {
         this.isplata = isplata;
     }
 
@@ -161,19 +165,19 @@ public class Zaposl implements Serializable {
         this.nazivoj = nazivoj;
     }
 
-    public Long getNeoporez() {
+    public BigDecimal getNeoporez() {
         return neoporez;
     }
 
-    public void setNeoporez(Long neoporez) {
+    public void setNeoporez(BigDecimal neoporez) {
         this.neoporez = neoporez;
     }
 
-    public Long getNeto() {
+    public BigDecimal getNeto() {
         return neto;
     }
 
-    public void setNeto(Long neto) {
+    public void setNeto(BigDecimal neto) {
         this.neto = neto;
     }
 
@@ -185,11 +189,11 @@ public class Zaposl implements Serializable {
         this.obrid = obrid;
     }
 
-    public Long getObustave() {
+    public BigDecimal getObustave() {
         return obustave;
     }
 
-    public void setObustave(Long obustave) {
+    public void setObustave(BigDecimal obustave) {
         this.obustave = obustave;
     }
 
@@ -201,27 +205,27 @@ public class Zaposl implements Serializable {
         this.oib = oib;
     }
 
-    public Long getOlaksica() {
+    public BigDecimal getOlaksica() {
         return olaksica;
     }
 
-    public void setOlaksica(Long olaksica) {
+    public void setOlaksica(BigDecimal olaksica) {
         this.olaksica = olaksica;
     }
 
-    public Long getPorezosn() {
+    public BigDecimal getPorezosn() {
         return porezosn;
     }
 
-    public void setPorezosn(Long porezosn) {
+    public void setPorezosn(BigDecimal porezosn) {
         this.porezosn = porezosn;
     }
 
-    public Long getPoripri() {
+    public BigDecimal getPoripri() {
         return poripri;
     }
 
-    public void setPoripri(Long poripri) {
+    public void setPoripri(BigDecimal poripri) {
         this.poripri = poripri;
     }
 
@@ -233,11 +237,11 @@ public class Zaposl implements Serializable {
         this.prezime = prezime;
     }
 
-    public Long getPrimanja() {
+    public BigDecimal getPrimanja() {
         return primanja;
     }
 
-    public void setPrimanja(Long primanja) {
+    public void setPrimanja(BigDecimal primanja) {
         this.primanja = primanja;
     }
 
@@ -249,11 +253,11 @@ public class Zaposl implements Serializable {
         this.rbr = rbr;
     }
 
-    public Long getTrosakpl() {
+    public BigDecimal getTrosakpl() {
         return trosakpl;
     }
 
-    public void setTrosakpl(Long trosakpl) {
+    public void setTrosakpl(BigDecimal trosakpl) {
         this.trosakpl = trosakpl;
     }
 }

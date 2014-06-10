@@ -9,11 +9,13 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "Poduzece.findAll", query = "select o from Poduzece o") })
+@Table(schema = "COPDB")
 public class Poduzece implements Serializable {
     private static final long serialVersionUID = -6879717503509118984L;
     @Column(nullable = false)

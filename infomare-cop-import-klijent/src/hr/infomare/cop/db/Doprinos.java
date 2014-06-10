@@ -2,22 +2,26 @@ package hr.infomare.cop.db;
 
 import java.io.Serializable;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "Doprinos.findAll", query = "select o from Doprinos o") })
 @IdClass(DoprinosPK.class)
+@Table(schema = "COPDB")
 public class Doprinos implements Serializable {
     private static final long serialVersionUID = 2215706990861538354L;
     @Column(nullable = false)
     private int doprinos;
     @Column(nullable = false)
-    private Long iznos;
+    private BigDecimal iznos;
     @Column(nullable = false)
     private String naziv;
     @Id
@@ -29,7 +33,7 @@ public class Doprinos implements Serializable {
     @Column(nullable = false)
     private int rbr;
     @Column(nullable = false)
-    private Long stopa;
+    private BigDecimal stopa;
     @Id
     @Column(nullable = false)
     private int stv;
@@ -37,7 +41,7 @@ public class Doprinos implements Serializable {
     public Doprinos() {
     }
 
-    public Doprinos(int doprinos, Long iznos, String naziv, int obrid, String primjena, int rbr, Long stopa, int stv) {
+    public Doprinos(int doprinos, BigDecimal iznos, String naziv, int obrid, String primjena, int rbr, BigDecimal stopa, int stv) {
         this.doprinos = doprinos;
         this.iznos = iznos;
         this.naziv = naziv;
@@ -56,11 +60,11 @@ public class Doprinos implements Serializable {
         this.doprinos = doprinos;
     }
 
-    public Long getIznos() {
+    public BigDecimal getIznos() {
         return iznos;
     }
 
-    public void setIznos(Long iznos) {
+    public void setIznos(BigDecimal iznos) {
         this.iznos = iznos;
     }
 
@@ -96,11 +100,11 @@ public class Doprinos implements Serializable {
         this.rbr = rbr;
     }
 
-    public Long getStopa() {
+    public BigDecimal getStopa() {
         return stopa;
     }
 
-    public void setStopa(Long stopa) {
+    public void setStopa(BigDecimal stopa) {
         this.stopa = stopa;
     }
 

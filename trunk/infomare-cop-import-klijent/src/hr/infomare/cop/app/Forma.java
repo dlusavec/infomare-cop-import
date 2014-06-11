@@ -82,51 +82,21 @@ public class Forma extends javax.swing.JPanel {
     
     public String xmlDatoteka;
     
+    public int brojZapisa() throws JAXBException {
+        
+        JAXBContext jc = JAXBContext.newInstance(OpObrasci.class);
+        Unmarshaller unmarshaller = jc.createUnmarshaller();
+        
+        OpObrasci obrasci= (OpObrasci)
+           unmarshaller.unmarshal(new File(xmlDatoteka));
+        
+        List<ZaposlenikType> listaZaposlenika= obrasci.getZaposlenik();
+        
+        return listaZaposlenika.size();
+    }
+    
+    
     class Task extends SwingWorker<Void, Void> {
-        
-        
-        public int brojZapisa() throws JAXBException {
-            
-            JAXBContext jc = JAXBContext.newInstance(OpObrasci.class);
-            Unmarshaller unmarshaller = jc.createUnmarshaller();
-            
-            OpObrasci obrasci= (OpObrasci)
-               unmarshaller.unmarshal(new File(xmlDatoteka));
-            
-            List<ZaposlenikType> listaZaposlenika= obrasci.getZaposlenik();
-            
-            return listaZaposlenika.size();
-        }
-        
-        public void resetirajGUI() throws JAXBException {
-            //resetiram progressbar
-            Run.forma.setPreferredSize(new Dimension(853,320));
-            Run.frm.pack();
-            
-            
-            jProgressBar1.setForeground(new Color(0,0,255));
-            jProgressBar1.setStringPainted(true); // da prikaze postotak progressa
-            jProgressBar1.setMinimum(0);
-            
-            try{
-            jProgressBar1.setMaximum(brojZapisa());
-            }  
-                catch(Exception e1){}
-            
-            jProgressBar1.setValue(0);
-            jProgressBar1.repaint();
-            
-            
-            //brisem tablicu zaposlenika 
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            model.setRowCount(0);
-            
-            
-            //brisem prikaz gresaka     
-            jTextArea1.setText("");
-        }
-        
-        
 
         @Override
         public Void doInBackground()  {
@@ -139,7 +109,6 @@ public class Forma extends javax.swing.JPanel {
             
          try {
              
-                resetirajGUI();
              
              
                 emf = Persistence.createEntityManagerFactory("infomare-cop-import-klijent", Pomocna.getPersistenceProps());
@@ -496,12 +465,41 @@ public class Forma extends javax.swing.JPanel {
         }
     }
  
+ 
+ 
+    public void resetirajGUI() throws JAXBException {
+        //resetiram progressbar
+        Run.forma.setPreferredSize(new Dimension(853,320));
+        Run.frm.pack();
+        
+        
+        jProgressBar1.setForeground(new Color(0,0,255));
+        jProgressBar1.setStringPainted(true); // da prikaze postotak progressa
+        jProgressBar1.setMinimum(0);
+        try{
+        jProgressBar1.setMaximum(brojZapisa());
+        }catch(Exception e1){}
+        //maximum ce se postaviti u threadu
+        
+        jProgressBar1.setValue(0);
+        jProgressBar1.repaint();
+        
+        
+        //brisem tablicu zaposlenika 
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        
+        
+        //brisem prikaz gresaka     
+        jTextArea1.setText("");
+    }
     
-    public void zapocniImport(){
+    public void zapocniImport() throws JAXBException {
         int dialogButton = JOptionPane.YES_NO_OPTION;
         int dialogResult = JOptionPane.showConfirmDialog(this, "Potvrdite import podataka !", "Potvrda",dialogButton);
         if(dialogResult==0) {
             // yes
+            resetirajGUI();
             Task t = new Task();
             t.execute();
 
@@ -537,8 +535,11 @@ public class Forma extends javax.swing.JPanel {
                         else{
                                 txtXml.setText(files[0].getAbsolutePath());
                                 xmlDatoteka = files[0].getAbsolutePath();
-                                zapocniImport();
-                            } 
+                        try {
+                            zapocniImport();
+                        } catch (JAXBException e) {
+                        }
+                    } 
                 }
               }   
           });
@@ -660,8 +661,11 @@ public class Forma extends javax.swing.JPanel {
                       else{
                        txtXml.setText(openFile.getSelectedFile().toString());
                           xmlDatoteka=openFile.getSelectedFile().toString();
-                          zapocniImport();
-                      }
+            try {
+                zapocniImport();
+            } catch (JAXBException e) {
+            }
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTable1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jTable1ComponentAdded

@@ -81,6 +81,7 @@ import javax.xml.bind.Unmarshaller;
 public class Forma extends javax.swing.JPanel {
     
     public String xmlDatoteka;
+    Task t;  // thread za import podataka i azuriranje progressbara i tablice
     
     public int brojZapisa() throws JAXBException {
         
@@ -500,7 +501,7 @@ public class Forma extends javax.swing.JPanel {
         if(dialogResult==0) {
             // yes
             resetirajGUI();
-            Task t = new Task();
+            t = new Task();
             t.execute();
 
         }
@@ -526,6 +527,13 @@ public class Forma extends javax.swing.JPanel {
         
         new  FileDrop( txtXml, new FileDrop.Listener()
           {   public void  filesDropped( java.io.File[] files ) {   
+                  try{
+                      if(t.isDone()==false){
+                          Pomocna.porukaError(Run.frm, "Import je u tijeku !");
+                          return;
+                      }
+                  } catch (Exception e) {
+                  }
 
                  if(files.length>1)
                      Pomocna.porukaError(Run.frm,"Dozvoljena samo jedna datoteka !");
@@ -651,6 +659,15 @@ public class Forma extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        
+        try{
+            if(t.isDone()==false){
+                Pomocna.porukaError(Run.frm, "Import je u tijeku !");
+                return;
+            }
+        } catch (Exception e) {
+        }
+        
         
         JFileChooser openFile = new JFileChooser();
         openFile.showOpenDialog(null);

@@ -27,6 +27,14 @@ import hr.infomare.cop.opci.FileDrop;
 
 import hr.infomare.cop.opci.Pomocna;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+
+import java.awt.event.ComponentAdapter;
+
+import java.awt.event.ComponentEvent;
+
 import java.math.BigDecimal;
 
 import javax.persistence.EntityManager;
@@ -42,6 +50,10 @@ import javax.swing.table.DefaultTableModel;
 
 import java.io.File;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 import java.text.DateFormat;
 
 import java.text.SimpleDateFormat;
@@ -51,10 +63,13 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 
 import javax.swing.JMenuItem;
+
+import javax.swing.table.TableCellRenderer;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -71,6 +86,7 @@ public class Forma extends javax.swing.JPanel {
         
         
         public int brojZapisa() throws JAXBException {
+            
             JAXBContext jc = JAXBContext.newInstance(OpObrasci.class);
             Unmarshaller unmarshaller = jc.createUnmarshaller();
             
@@ -82,30 +98,64 @@ public class Forma extends javax.swing.JPanel {
             return listaZaposlenika.size();
         }
         
+        public void resetirajGUI() throws JAXBException {
+            //resetiram progressbar
+            Run.forma.setPreferredSize(new Dimension(853,320));
+            Run.frm.pack();
+            
+            
+            jProgressBar1.setForeground(new Color(0,0,255));
+            jProgressBar1.setStringPainted(true); // da prikaze postotak progressa
+            jProgressBar1.setMinimum(0);
+            
+            try{
+            jProgressBar1.setMaximum(brojZapisa());
+            }  
+                catch(Exception e1){}
+            
+            jProgressBar1.setValue(0);
+            jProgressBar1.repaint();
+            
+            
+            //brisem tablicu zaposlenika 
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            
+            
+            //brisem prikaz gresaka     
+            jTextArea1.setText("");
+        }
+        
         
 
         @Override
-        public Void doInBackground() throws Exception {
-
-            DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
-
-            jProgressBar1.setStringPainted(true); // da prikaze postotak progressa
-            jProgressBar1.setMinimum(0);
-            jProgressBar1.setMaximum(brojZapisa());
-
+        public Void doInBackground()  {
             EntityManagerFactory emf;
-        
-                emf =
-                    Persistence.createEntityManagerFactory("infomare-cop-import-klijent",
-                                                           Pomocna.getPersistenceProps());
-
-            EntityManager em = emf.createEntityManager();
-
-            try {
+            EntityManager em = null;
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            
+            Integer iduciId=null;  //iduci id obracuna
+            int iduciRbr=0;   //iduci Rbr
+            
+         try {
+             
+                resetirajGUI();
+             
+             
+                emf = Persistence.createEntityManagerFactory("infomare-cop-import-klijent", Pomocna.getPersistenceProps());
+                em = emf.createEntityManager();
+             
                 em.getTransaction().begin();
-                
+             
+             
+             
+             
+             
+                DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+    
+
                 //pronadji iduci ID obracuna
-                Integer iduciId = em.createQuery("select max(O.obrid) FROM Obracun O", Integer.class).getSingleResult();
+                iduciId = em.createQuery("select max(O.obrid) FROM Obracun O", Integer.class).getSingleResult();
                 if (iduciId==null) iduciId=0;
                 iduciId=iduciId+1;
                 
@@ -156,18 +206,27 @@ public class Forma extends javax.swing.JPanel {
                 
                 List<ZaposlenikType> listaZaposlenika= obrasci.getZaposlenik();
                 
+                iduciRbr=0;
                 for(ZaposlenikType xmlZaposlenik : listaZaposlenika){
                     
-                                 jProgressBar1.setValue(jProgressBar1.getValue()+1);
+                                 jProgressBar1.setValue(iduciRbr+1);
+                                 jProgressBar1.repaint();
                                     
                                    System.out.println(xmlZaposlenik.getIme()+" "+xmlZaposlenik.getPrezime());
+                    
+                                    model = (DefaultTableModel) jTable1.getModel();
+                                    model.addRow(new Object[]{Integer.toString(iduciRbr+1)+"/"+Integer.toString(listaZaposlenika.size()), xmlZaposlenik.getOib(), xmlZaposlenik.getPrezime(),xmlZaposlenik.getIme()});
+                                 //   jTable1.scrollRectToVisible(jTable1.getCellRect(jTable1.getRowCount()-1, 0, true));
                                 
-                                
+                               iduciRbr++;
                                 //pronadji iduci Rbr  ovo se moze optimizirati da koristi brojac iz petlje pa
                                 // ce se ustedjeti na puno upita
+                    
+                    /*
                                 Integer iduciRbr = em.createQuery("select max(Z.rbr) FROM Zaposl Z where Z.obrid="+Integer.toString(iduciId), Integer.class).getSingleResult();
                                 if (iduciRbr==null) iduciRbr=0;
                                 iduciRbr=iduciRbr+1;
+                    */
                                 
                                  Zaposl zaposl= new Zaposl();
                                  zaposl.setObrid(iduciId);
@@ -374,20 +433,65 @@ public class Forma extends javax.swing.JPanel {
                                     em.persist(zaprac);
                                 }
                             
-                            
+                    
+                   
+                        em.flush();
+                        em.clear();
+                    
+
                     
                 } 
-                System.out.println("kraj");
-
-
+             
+             
                 em.getTransaction().commit();
+             
+             
+             
+                System.out.println("kraj");
+                jProgressBar1.repaint();
+                Pomocna.porukaInfo(Run.frm, "Import podataka uspješno dovršen !");
             } catch (Exception e) {
-                System.out.println(e.getMessage());
-                em.getTransaction().rollback();
+          
+                Run.forma.setPreferredSize(new Dimension(853,479));
+                Run.frm.pack();
+             
+                jTextArea1.setText("XML:"+xmlDatoteka);
+                
+                if(iduciId!=null)
+                jTextArea1.setText("OBRID:"+Integer.toString(iduciId));
+       
+                
+                jTextArea1.setText(jTextArea1.getText()+"\n"+ "Rbr:"+Integer.toString(iduciRbr));
+             
+                 try{
+                    em.getTransaction().rollback();
+                    }catch(Exception e1){
+                        }   
+                
+                jProgressBar1.repaint();
+ 
+                
+                try{
+                    jTextArea1.setText(jTextArea1.getText()+"\n"+e.getStackTrace().toString());
+                }catch(Exception e1){
+                    }         
+                
+                try{
+                jTextArea1.setText(jTextArea1.getText()+"\n"+e.getMessage());
+                }catch(Exception e1){
+                    }
+                
+                jProgressBar1.setForeground(new Color(255,0,0));
+                Pomocna.porukaError(Run.frm, "Greška prilikom importa podataka !");
+                
+                
             } finally {
                 em.close();
             }
 
+            
+            
+            
             return null;
         }
     }
@@ -400,7 +504,7 @@ public class Forma extends javax.swing.JPanel {
             // yes
             Task t = new Task();
             t.execute();
-            
+
         }
     }
     
@@ -411,23 +515,31 @@ public class Forma extends javax.swing.JPanel {
         
         initComponents();
         
+        jProgressBar1.setForeground(new Color(0,0,255));
         jProgressBar1.setStringPainted(true);
         
+        jTable1.addComponentListener(new ComponentAdapter() {
+            public void componentResized(ComponentEvent e) {
+                jTable1.scrollRectToVisible(jTable1.getCellRect(jTable1.getRowCount()-1, 0, true));
+            }
+        });
+        
+        
+        
         new  FileDrop( txtXml, new FileDrop.Listener()
-          {   public void  filesDropped( java.io.File[] files )
-              {   
+          {   public void  filesDropped( java.io.File[] files ) {   
 
                  if(files.length>1)
-                     Pomocna.porukaInfo(Run.frm,"Dozvoljena samo jedna datoteka !");
+                     Pomocna.porukaError(Run.frm,"Dozvoljena samo jedna datoteka !");
                  else{
                         if(files[0].getAbsolutePath().indexOf(".xml")==-1)
-                            Pomocna.porukaInfo(Run.frm,"Datoteka treba imati xml ekstenziju !");
+                            Pomocna.porukaError(Run.frm,"Datoteka treba imati xml ekstenziju !");
                         else{
-                            txtXml.setText(files[0].getAbsolutePath());
-                            xmlDatoteka=files[0].getAbsolutePath();
-                            zapocniImport();
-                        }
-                 }
+                                txtXml.setText(files[0].getAbsolutePath());
+                                xmlDatoteka = files[0].getAbsolutePath();
+                                zapocniImport();
+                            } 
+                }
               }   
           });
         
@@ -449,15 +561,26 @@ public class Forma extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jProgressBar1 = new javax.swing.JProgressBar();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setMaximumSize(new java.awt.Dimension(536, 365));
         setMinimumSize(new java.awt.Dimension(536, 365));
-        setPreferredSize(new java.awt.Dimension(860, 390));
+        setPreferredSize(new java.awt.Dimension(853, 320));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtXml.setEditable(false);
         txtXml.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        add(txtXml, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 700, -1));
+        txtXml.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtXmlActionPerformed(evt);
+            }
+        });
+        add(txtXml, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 680, -1));
 
         jButton3.setText("...");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -465,13 +588,64 @@ public class Forma extends javax.swing.JPanel {
                 jButton3ActionPerformed(evt);
             }
         });
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 20, 20, -1));
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 20, 20, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel1.setText("XML datoteka");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel1.setText("Greške");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
         add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 820, 30));
+
+        jScrollPane1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Rbr", "OIB", "Prezime", "Ime"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                jTable1ComponentAdded(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+        jTable1.getColumnModel().getColumn(0).setHeaderValue("Rbr");
+        jTable1.getColumnModel().getColumn(1).setHeaderValue("OIB");
+        jTable1.getColumnModel().getColumn(2).setHeaderValue("Prezime");
+        jTable1.getColumnModel().getColumn(3).setHeaderValue("Ime");
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 820, 200));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 820, 110));
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel2.setText("XML datoteka");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 820, -1));
     }//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -482,7 +656,7 @@ public class Forma extends javax.swing.JPanel {
         if(openFile.getSelectedFile()==null) return;
 
                       if(openFile.getSelectedFile().toString().indexOf(".xml")==-1)
-                          Pomocna.porukaInfo(Run.frm,"Datoteka treba imati xml ekstenziju !");
+                          Pomocna.porukaError(Run.frm,"Datoteka treba imati xml ekstenziju !");
                       else{
                        txtXml.setText(openFile.getSelectedFile().toString());
                           xmlDatoteka=openFile.getSelectedFile().toString();
@@ -490,11 +664,27 @@ public class Forma extends javax.swing.JPanel {
                       }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jTable1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jTable1ComponentAdded
+        // TODO add your handling code here:
+        jTable1.getTableHeader().setFont(new Font("Arial", Font.BOLD, 12));
+
+    }//GEN-LAST:event_jTable1ComponentAdded
+
+    private void txtXmlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtXmlActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtXmlActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField txtXml;
     // End of variables declaration//GEN-END:variables
 

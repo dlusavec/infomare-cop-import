@@ -39,9 +39,11 @@ public class Login extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(295, 130));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnSpremi.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnSpremi.setText("Spremi");
-        btnSpremi.setMaximumSize(new java.awt.Dimension(77, 21));
-        btnSpremi.setMinimumSize(new java.awt.Dimension(77, 21));
+        btnSpremi.setMaximumSize(new java.awt.Dimension(84, 22));
+        btnSpremi.setMinimumSize(new java.awt.Dimension(84, 22));
+        btnSpremi.setPreferredSize(new java.awt.Dimension(84, 25));
         btnSpremi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSpremiActionPerformed(evt);
@@ -79,13 +81,15 @@ public class Login extends javax.swing.JPanel {
         txtLozinka.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         add(txtLozinka, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 154, -1));
 
+        btnOdustani.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnOdustani.setText("Odustani");
+        btnOdustani.setPreferredSize(new java.awt.Dimension(84, 25));
         btnOdustani.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOdustaniActionPerformed(evt);
             }
         });
-        add(btnOdustani, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
+        add(btnOdustani, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
     }//GEN-END:initComponents
 
     private void btnOdustaniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOdustaniActionPerformed

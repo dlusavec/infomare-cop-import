@@ -237,7 +237,7 @@ public class Forma extends javax.swing.JPanel {
                                  zaposl.setPoripri(xmlZaposlenik.getPorezNaDohodakIPrirez().getUkIznos());
                                  zaposl.setNeto(xmlZaposlenik.getNeto());
                                  zaposl.setNeoporez(xmlZaposlenik.getNeoporeziviPrihodi().getUkIznos());
-                                 zaposl.setPrimanja(xmlZaposlenik.getNeto());               // ovo ok?
+                                 zaposl.setPrimanja(xmlZaposlenik.getUkPrimanja());               // ovo ok?
                                  zaposl.setObustave(xmlZaposlenik.getObustave().getUkIznos());
                                  zaposl.setIsplata(xmlZaposlenik.getIznosZaisplatu());
                                  zaposl.setTrosakpl(xmlZaposlenik.getUkTrosakPlace());
@@ -622,6 +622,7 @@ public class Forma extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        lblStatus = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(536, 365));
         setMinimumSize(new java.awt.Dimension(536, 365));
@@ -723,6 +724,10 @@ public class Forma extends javax.swing.JPanel {
         });
         add(jTextField1);
         jTextField1.setBounds(130, 20, 50, 20);
+
+        lblStatus.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        add(lblStatus);
+        lblStatus.setBounds(190, 20, 530, 15);
     }//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -770,6 +775,7 @@ public class Forma extends javax.swing.JPanel {
             
         if(oldID.equals("")){
             status=0;
+            lblStatus.setText("");
             return;
         }
         
@@ -789,8 +795,12 @@ public class Forma extends javax.swing.JPanel {
             
             try{
             status = em.createQuery("select O.status FROM Obracun O where O.obrid="+oldID, Integer.class).getSingleResult();
+                lblStatus.setText("Obraèun je moguæe pregaziti !");
+                lblStatus.setForeground(new Color(0,255,10));
             }catch(Exception e){
                     status=-1;
+                    lblStatus.setText("Obraèun ne postoji !");
+                    lblStatus.setForeground(new Color(255,0,0));
                 }
             
         
@@ -815,6 +825,7 @@ public class Forma extends javax.swing.JPanel {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblStatus;
     private javax.swing.JTextField txtXml;
     // End of variables declaration//GEN-END:variables
 

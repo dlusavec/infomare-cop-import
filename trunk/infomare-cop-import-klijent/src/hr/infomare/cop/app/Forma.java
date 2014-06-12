@@ -128,6 +128,16 @@ public class Forma extends javax.swing.JPanel {
     
              if(status==10) {
                  iduciId=Integer.valueOf(oldID);
+                    em.createQuery("delete from Poduzece p where p.obrid="+Integer.toString(iduciId)).executeUpdate();
+                    em.createQuery("delete from Zaposl p where p.obrid="+Integer.toString(iduciId)).executeUpdate();
+                    em.createQuery("delete from Prihod p where p.obrid="+Integer.toString(iduciId)).executeUpdate();
+                    em.createQuery("delete from Poripri p where p.obrid="+Integer.toString(iduciId)).executeUpdate();
+                    em.createQuery("delete from Obracun p where p.obrid="+Integer.toString(iduciId)).executeUpdate();
+                    em.createQuery("delete from Param p where p.obrid="+Integer.toString(iduciId)).executeUpdate();
+                    em.createQuery("delete from Olaksica p where p.obrid="+Integer.toString(iduciId)).executeUpdate();
+                    em.createQuery("delete from Doprinos p where p.obrid="+Integer.toString(iduciId)).executeUpdate();
+                    em.createQuery("delete from Obustava p where p.obrid="+Integer.toString(iduciId)).executeUpdate();
+                    em.createQuery("delete from Zaprac p where p.obrid="+Integer.toString(iduciId)).executeUpdate();
                 } else {
                     //pronadji iduci ID obracuna
                     iduciId = em.createQuery("select max(O.obrid) FROM Obracun O", Integer.class).getSingleResult();
@@ -517,11 +527,28 @@ public class Forma extends javax.swing.JPanel {
         int dialogResult = JOptionPane.showConfirmDialog(this, "Potvrdite import podataka !", "Potvrda",dialogButton);
         if(dialogResult==0) {
             // yes
-            resetirajGUI();
-            t = new Task();
-            t.execute();
+            
+            if(status==10){
+                int dialogButton1 = JOptionPane.YES_NO_OPTION;
+                int dialogResult1 = JOptionPane.showConfirmDialog(this, "Potvrdite prepisivanje obraèuna "+oldID+" !", "Potvrda",dialogButton1);
+                if(dialogResult1==0) {
+                    // yes
+                    
+                    
+                    resetirajGUI();
+                    t = new Task();
+                    t.execute();
+                    }
 
-        }
+                } else if(status==0){
+                    resetirajGUI();
+                    t = new Task();
+                    t.execute();
+                }
+            }
+            
+
+        
     }
     
     
@@ -688,13 +715,14 @@ public class Forma extends javax.swing.JPanel {
         add(jLabel3);
         jLabel3.setBounds(20, 50, 78, 15);
 
+        jTextField1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextField1FocusLost(evt);
             }
         });
         add(jTextField1);
-        jTextField1.setBounds(130, 20, 50, 19);
+        jTextField1.setBounds(130, 20, 50, 20);
     }//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

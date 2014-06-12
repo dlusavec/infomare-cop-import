@@ -81,6 +81,9 @@ import javax.xml.bind.Unmarshaller;
 public class Forma extends javax.swing.JPanel {
     
     public String xmlDatoteka;
+    Integer status;
+    String oldID;
+    
     Task t;  // thread za import podataka i azuriranje progressbara i tablice
     
     public int brojZapisa() throws JAXBException {
@@ -123,14 +126,16 @@ public class Forma extends javax.swing.JPanel {
              
                 DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
     
-
-                //pronadji iduci ID obracuna
-                iduciId = em.createQuery("select max(O.obrid) FROM Obracun O", Integer.class).getSingleResult();
-                if (iduciId==null) iduciId=0;
-                iduciId=iduciId+1;
+             if(status==10) {
+                 iduciId=Integer.valueOf(oldID);
+                } else {
+                    //pronadji iduci ID obracuna
+                    iduciId = em.createQuery("select max(O.obrid) FROM Obracun O", Integer.class).getSingleResult();
+                    if (iduciId==null) iduciId=0;
+                    iduciId=iduciId+1;
+                }
                 
-                
-                System.out.println(Integer.toString(iduciId));
+                //System.out.println(Integer.toString(iduciId));
                 // èitanje xml-a i insert podataka
 
                 System.out.println("pocetak");
@@ -147,9 +152,9 @@ public class Forma extends javax.swing.JPanel {
                 
                 Obracun obracun = new Obracun();
                 obracun.setObrid(iduciId);
-                obracun.setK50god(0);
-                obracun.setK50nal(0);
-                obracun.setStatus(0);
+                obracun.setK50god(null);
+                obracun.setK50nal(null);
+                obracun.setStatus(10);
                 em.persist(obracun);
                 
                 
@@ -337,7 +342,7 @@ public class Forma extends javax.swing.JPanel {
                                     prihod.setStv(i+1);
                                     prihod.setPrihod(listaNeoPrih.get(i).getElementPlace().getVrPrihoda());
                                     prihod.setNaziv(listaNeoPrih.get(i).getElementPlace().getNaziv());
-                                    prihod.setNeoporez("1");  // 1 - neoporezivi primitak ,2 - bruto
+                                    prihod.setNeoporez("1");  // 1 - neoporezivi primitak ,0 - bruto
                                     prihod.setInternauj(null);
                                     prihod.setNaziv(null);
                                     prihod.setSati(listaNeoPrih.get(i).getBrSati());
@@ -357,7 +362,7 @@ public class Forma extends javax.swing.JPanel {
                                     prihod.setStv(i+1);
                                     prihod.setPrihod(listaBruto.get(i).getElementPlace().getVrPrihoda());
                                     prihod.setNaziv(listaBruto.get(i).getElementPlace().getNaziv());
-                                    prihod.setNeoporez("2");   // 2- bruto
+                                    prihod.setNeoporez("0");   // 0- bruto
                                     prihod.setInternauj(listaBruto.get(i).getInternaOznakaUJ());
                                     prihod.setNazivuj(listaBruto.get(i).getNazivUJ());
                                     prihod.setSati(listaBruto.get(i).getBrSati());
@@ -496,6 +501,18 @@ public class Forma extends javax.swing.JPanel {
     }
     
     public void zapocniImport() throws JAXBException {
+        
+        
+        
+        if(status==-1) {
+            Pomocna.porukaError(Run.frm, "Obraèun za upisani ID ne postoji !");
+            return;
+        }
+        else if(status>10) {
+            Pomocna.porukaError(Run.frm, "Obraèun ima status iznad 10 !");
+            return;
+        }
+        
         int dialogButton = JOptionPane.YES_NO_OPTION;
         int dialogResult = JOptionPane.showConfirmDialog(this, "Potvrdite import podataka !", "Potvrda",dialogButton);
         if(dialogResult==0) {
@@ -576,11 +593,13 @@ public class Forma extends javax.swing.JPanel {
         jTextArea1 = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setMaximumSize(new java.awt.Dimension(536, 365));
         setMinimumSize(new java.awt.Dimension(536, 365));
         setPreferredSize(new java.awt.Dimension(853, 320));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(null);
 
         txtXml.setEditable(false);
         txtXml.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -589,7 +608,8 @@ public class Forma extends javax.swing.JPanel {
                 txtXmlActionPerformed(evt);
             }
         });
-        add(txtXml, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 680, -1));
+        add(txtXml);
+        txtXml.setBounds(130, 50, 680, 20);
 
         jButton3.setText("...");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -597,13 +617,16 @@ public class Forma extends javax.swing.JPanel {
                 jButton3ActionPerformed(evt);
             }
         });
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 20, 20, -1));
+        add(jButton3);
+        jButton3.setBounds(820, 50, 20, 21);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setText("Greške");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
-        add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 820, 30));
+        add(jLabel1);
+        jLabel1.setBounds(20, 340, 41, 15);
+        add(jProgressBar1);
+        jProgressBar1.setBounds(20, 80, 820, 30);
 
         jScrollPane1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
@@ -641,20 +664,37 @@ public class Forma extends javax.swing.JPanel {
         jTable1.getColumnModel().getColumn(2).setHeaderValue("Prezime");
         jTable1.getColumnModel().getColumn(3).setHeaderValue("Ime");
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 820, 200));
+        add(jScrollPane1);
+        jScrollPane1.setBounds(20, 120, 820, 190);
 
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 820, 110));
+        add(jScrollPane2);
+        jScrollPane2.setBounds(20, 360, 820, 110);
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel2.setText("XML datoteka");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 820, -1));
+        jLabel2.setText("ID obraèuna");
+        add(jLabel2);
+        jLabel2.setBounds(20, 20, 68, 15);
+        add(jSeparator1);
+        jSeparator1.setBounds(20, 330, 820, 2);
+
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel3.setText("XML datoteka");
+        add(jLabel3);
+        jLabel3.setBounds(20, 50, 78, 15);
+
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField1FocusLost(evt);
+            }
+        });
+        add(jTextField1);
+        jTextField1.setBounds(130, 20, 50, 19);
     }//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -695,17 +735,58 @@ public class Forma extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtXmlActionPerformed
 
+    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+        // TODO add your handling code here:
+        
+        oldID=jTextField1.getText();
+            
+        if(oldID.equals("")){
+            status=0;
+            return;
+        }
+        
+        try{
+        EntityManagerFactory emf;
+        EntityManager em = null;
+        
+    
+         
+
+         
+            emf = Persistence.createEntityManagerFactory("infomare-cop-import-klijent", Pomocna.getPersistenceProps());
+            em = emf.createEntityManager();
+         
+            em.getTransaction().begin();
+            
+            
+            try{
+            status = em.createQuery("select O.status FROM Obracun O where O.obrid="+oldID, Integer.class).getSingleResult();
+            }catch(Exception e){
+                    status=-1;
+                }
+            
+        
+            
+            em.getTransaction().commit();
+            em.close();
+        }catch(Exception e){}
+        
+    }//GEN-LAST:event_jTextField1FocusLost
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField txtXml;
     // End of variables declaration//GEN-END:variables
 

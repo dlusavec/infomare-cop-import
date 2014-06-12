@@ -795,8 +795,13 @@ public class Forma extends javax.swing.JPanel {
             
             try{
             status = em.createQuery("select O.status FROM Obracun O where O.obrid="+oldID, Integer.class).getSingleResult();
+                if(status<=10){
                 lblStatus.setText("Obraèun je moguæe pregaziti !");
                 lblStatus.setForeground(new Color(0,255,10));
+                } else {
+                    lblStatus.setText("Obraèun nije moguæe pregaziti (status veæi od 10) !");
+                    lblStatus.setForeground(new Color(255,0,0));
+                }
             }catch(Exception e){
                     status=-1;
                     lblStatus.setText("Obraèun ne postoji !");

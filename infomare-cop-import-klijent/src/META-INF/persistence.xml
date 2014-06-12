@@ -19,9 +19,6 @@
       <property name="eclipselink.target-server" value="WebLogic_10"/>
       <property name="javax.persistence.jtaDataSource" value="java:/app/jdbc/jdbc/COP_konekcijaDS"/>
       <property name="javax.persistence.jdbc.driver" value="com.ibm.as400.access.AS400JDBCDriver"/>
-      <property name="javax.persistence.jdbc.password" value="E887458432872BD20754518003885B08"/>
-      <property name="javax.persistence.jdbc.url" value="jdbc:as400://s655cb5b.infomare.hr;"/>
-      <property name="javax.persistence.jdbc.user" value="COPUSER"/>
     </properties>
 
 

@@ -2,9 +2,12 @@ package hr.infomare.cop.opci;
 
 import java.awt.Component;
 
+import java.io.File;
 import java.io.FileInputStream;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -15,6 +18,11 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 
 import java.util.Properties;
+
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+
+import java.util.logging.Logger;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -38,23 +46,7 @@ public class Pomocna {
     }
     
     
-    
-    public static boolean validateAgainstXSD(InputStream xml, InputStream xsd)
-    {
-        try
-        {
-            SchemaFactory factory = 
-                SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-            Schema schema = factory.newSchema(new StreamSource(xsd));
-            Validator validator = schema.newValidator();
-            validator.validate(new StreamSource(xml));
-            return true;
-        }
-        catch(Exception ex)
-        {
-            return false;
-        }
-    }
+
     
     
     public static HashMap getPersistenceProps() throws Exception {
@@ -117,7 +109,7 @@ public class Pomocna {
     }
     
     //postavke za spajanje na server 
-    public static boolean postavkeIspravne(){
+    public static boolean postavkeIspravne() {
         boolean ispravne = true;
         
         try{
@@ -134,8 +126,23 @@ public class Pomocna {
             ispravne=false;    
         }
         return ispravne;        
+        
     }
     
+    public static void log(String msg){
+         try
+         {
+             String filename= "log.txt";
+             FileWriter fw = new FileWriter(filename,true); 
+             fw.write(msg+"\n");
+             fw.close();
+         }
+         catch(IOException ioe)
+         {
+             System.err.println("IOException: " + ioe.getMessage());
+         }
+     }
+
     
     public synchronized static void  debugObjekta(Object object) {
         if (object == null) {

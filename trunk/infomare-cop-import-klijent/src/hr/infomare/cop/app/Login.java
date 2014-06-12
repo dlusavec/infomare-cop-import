@@ -6,6 +6,7 @@ import hr.infomare.cop.app.*;
 
 import java.awt.CardLayout;
 
+
 /**
  *
  * @author ivanj
@@ -37,7 +38,7 @@ public class Login extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(255, 125));
         setMinimumSize(new java.awt.Dimension(255, 125));
         setPreferredSize(new java.awt.Dimension(295, 130));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(null);
 
         btnSpremi.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnSpremi.setText("Spremi");
@@ -49,37 +50,44 @@ public class Login extends javax.swing.JPanel {
                 btnSpremiActionPerformed(evt);
             }
         });
-        add(btnSpremi, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 77, -1));
+        add(btnSpremi);
+        btnSpremi.setBounds(10, 100, 77, 25);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 255));
         jLabel1.setText("Server");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        add(jLabel1);
+        jLabel1.setBounds(10, 10, 38, 15);
 
         txtServer.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         txtServer.setMargin(new java.awt.Insets(0, 0, 0, 0));
         txtServer.setMaximumSize(null);
         txtServer.setPreferredSize(new java.awt.Dimension(4, 20));
-        add(txtServer, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 154, -1));
+        add(txtServer);
+        txtServer.setBounds(130, 10, 154, 20);
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 255));
         jLabel2.setText("Korisnièko ime");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 90, -1));
+        add(jLabel2);
+        jLabel2.setBounds(10, 40, 90, 15);
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 255));
         jLabel3.setText("Lozinka");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
+        add(jLabel3);
+        jLabel3.setBounds(10, 70, 44, 15);
 
         txtKorisnik.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         txtKorisnik.setMargin(new java.awt.Insets(0, 0, 0, 0));
         txtKorisnik.setMaximumSize(new java.awt.Dimension(4, 19));
         txtKorisnik.setPreferredSize(new java.awt.Dimension(4, 20));
-        add(txtKorisnik, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 154, -1));
+        add(txtKorisnik);
+        txtKorisnik.setBounds(130, 40, 154, 20);
 
         txtLozinka.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        add(txtLozinka, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 154, -1));
+        add(txtLozinka);
+        txtLozinka.setBounds(130, 70, 154, 20);
 
         btnOdustani.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnOdustani.setText("Odustani");
@@ -89,7 +97,8 @@ public class Login extends javax.swing.JPanel {
                 btnOdustaniActionPerformed(evt);
             }
         });
-        add(btnOdustani, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
+        add(btnOdustani);
+        btnOdustani.setBounds(200, 100, 84, 25);
     }//GEN-END:initComponents
 
     private void btnOdustaniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOdustaniActionPerformed
@@ -101,10 +110,11 @@ public class Login extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         Pomocna.spremiPostavke(txtServer.getText(), txtKorisnik.getText(), txtLozinka.getText());
-        
-        if (Pomocna.postavkeIspravne()){
-            Run.promijeniCard("Forma");
-        } else Pomocna.porukaError(this,"Postavke nisu ispravne !");
+        try{
+            if (Pomocna.postavkeIspravne()){
+                Run.promijeniCard("Forma");
+            } else Pomocna.porukaError(this,"Postavke nisu ispravne !");
+        } catch(Exception ex){}
     }//GEN-LAST:event_btnSpremiActionPerformed
 
 

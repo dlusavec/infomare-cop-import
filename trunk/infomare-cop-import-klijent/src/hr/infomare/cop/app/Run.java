@@ -32,6 +32,8 @@ import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import java.io.FileNotFoundException;
+
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -40,7 +42,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import org.netbeans.lib.awtextra.AbsoluteLayout;
+
 
 public class Run{
     
@@ -64,10 +66,11 @@ public class Run{
         
           
 
-    public static void main(String[] args) throws JAXBException, ClassNotFoundException, InstantiationException,
+    public static void main(String[] args) throws ClassNotFoundException, InstantiationException,
                                                   IllegalAccessException, UnsupportedLookAndFeelException {
         
-        
+    
+            
         frm = new JFrame("Cop import");      
         
         JMenuBar menuBar = new JMenuBar();
@@ -99,7 +102,7 @@ public class Run{
         cl = (CardLayout) cards.getLayout();
     
     
-
+        
         if(Pomocna.postavkeIspravne())
             promijeniCard("Forma");
         else promijeniCard("Login");
@@ -119,6 +122,7 @@ public class Run{
         frm.setVisible(true);
         
         
+
         
         
         

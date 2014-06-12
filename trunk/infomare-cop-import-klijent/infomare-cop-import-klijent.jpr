@@ -63,9 +63,18 @@
          <string v="XML_SCHEMA"/>
       </list>
    </hash>
+   <hash n="oracle.jdeveloper.ant.AntRunConfiguration">
+      <list n="classpath">
+         <url path="src/hr/infomare/cop/"/>
+      </list>
+   </hash>
    <hash n="oracle.jdeveloper.compiler.OjcConfiguration">
       <value n="internalEncoding" v="Cp1250"/>
       <value n="webIANAEncoding" v="windows-1250"/>
+   </hash>
+   <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
+      <hash n="profileDefinitions"/>
+      <list n="profileList"/>
    </hash>
    <hash n="oracle.jdeveloper.model.J2eeSettings">
       <value n="j2eeWebAppName" v="infomare-cop-import-infomare-cop-import-klijent-webapp"/>
@@ -91,14 +100,6 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="Java EE"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="AbsoluteLayout"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
             <url n="id" path="../../../Users/ivanj/AppData/Roaming/JDeveloper/system12.1.2.0.40.66.68/o.jdeveloper/Jt400.library"/>
             <value n="isJDK" v="false"/>
          </hash>
@@ -116,14 +117,6 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="Java EE"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="AbsoluteLayout"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
             <url n="id" path="../../../Users/ivanj/AppData/Roaming/JDeveloper/system12.1.2.0.40.66.68/o.jdeveloper/Jt400.library"/>
             <value n="isJDK" v="false"/>
          </hash>
@@ -135,11 +128,15 @@
    <hash n="oracle.toplink.workbench.addin">
       <hash n="persistence-list">
          <value n="jpa-version" v="2.0"/>
+         <value n="metamodel-generation-directory" v=""/>
          <hash n="src$META-INF$persistence.xml">
             <hash n="infomare-cop-import-klijent">
                <value n="development-database" v="COP_konekcija"/>
             </hash>
          </hash>
       </hash>
+   </hash>
+   <hash n="ResourceBundleOptions">
+      <list n="RegisteredResourceBundles"/>
    </hash>
 </jpr:project>

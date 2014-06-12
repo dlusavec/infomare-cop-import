@@ -29,6 +29,8 @@ import javax.persistence.EntityManagerFactory;
 
 import javax.persistence.Persistence;
 
+import javax.persistence.Query;
+
 import javax.swing.JOptionPane;
 
 import javax.xml.XMLConstants;
@@ -45,7 +47,38 @@ public class Pomocna {
         super();
     }
     
-    
+    public static void obrisiNalog(int idObracuna){
+        try{
+        
+             EntityManagerFactory emf = Persistence.createEntityManagerFactory("infomare-cop-import-klijent",getPersistenceProps());
+             EntityManager em = emf.createEntityManager();
+         
+             em.getTransaction().begin();
+            int cnt=0;
+            System.out.println("Brisem obracun sa id:"+idObracuna);
+
+                cnt=em.createQuery("delete from Poduzece p where p.obrid="+Integer.toString(idObracuna)).executeUpdate();
+                cnt=em.createQuery("delete from Zaposl p where p.obrid="+Integer.toString(idObracuna)).executeUpdate();
+                cnt=em.createQuery("delete from Prihod p where p.obrid="+Integer.toString(idObracuna)).executeUpdate();
+                cnt=em.createQuery("delete from Poripri p where p.obrid="+Integer.toString(idObracuna)).executeUpdate();
+                cnt=em.createQuery("delete from Obracun p where p.obrid="+Integer.toString(idObracuna)).executeUpdate();
+                cnt=em.createQuery("delete from Param p where p.obrid="+Integer.toString(idObracuna)).executeUpdate();
+                cnt=em.createQuery("delete from Olaksica p where p.obrid="+Integer.toString(idObracuna)).executeUpdate();
+                cnt=em.createQuery("delete from Doprinos p where p.obrid="+Integer.toString(idObracuna)).executeUpdate();
+                cnt=em.createQuery("delete from Obustava p where p.obrid="+Integer.toString(idObracuna)).executeUpdate();
+                cnt=em.createQuery("delete from Zaprac p where p.obrid="+Integer.toString(idObracuna)).executeUpdate();
+        
+
+            
+             em.getTransaction().commit();
+
+             em.close();
+        }catch(Exception ex){
+            System.out.println("greska");
+            ex.printStackTrace();
+        }
+        
+    }
 
     
     

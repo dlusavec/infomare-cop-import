@@ -345,31 +345,39 @@ public class Forma extends javax.swing.JPanel {
                                 
                                 ZaposlenikType.NeoporeziviPrihodi xmlZaplNeoPrih =  xmlZaposlenik.getNeoporeziviPrihodi();
                                 List<NeoporeziviPrihodiType> listaNeoPrih = xmlZaplNeoPrih.getElementNeoporezPrih();
-                                for(int i=0;i<listaNeoPrih.size();i++){
-                                    Prihod prihod = new Prihod();
-                                    prihod.setObrid(iduciId);
-                                    prihod.setRbr(iduciRbr);
-                                    prihod.setStv(i+1);
-                                    prihod.setPrihod(listaNeoPrih.get(i).getElementPlace().getVrPrihoda());
-                                    prihod.setNaziv(listaNeoPrih.get(i).getElementPlace().getNaziv());
-                                    prihod.setNeoporez("1");  // 1 - neoporezivi primitak ,0 - bruto
-                                    prihod.setInternauj(null);
-                                    prihod.setNaziv(null);
-                                    prihod.setSati(listaNeoPrih.get(i).getBrSati());
-                                    prihod.setKoef(null);
-                                    prihod.setOsnovica(null);
-                                    prihod.setIznos(listaNeoPrih.get(i).getIznos());
-                                    
-                                    em.persist(prihod);
-                                }
-                    
-                                ZaposlenikType.Bruto xmlZaplBruto = xmlZaposlenik.getBruto();
+
+                    int brPrihoda=0;
+                    if (listaNeoPrih.size() != 0) {
+                        for (int i = 0; i < listaNeoPrih.size(); i++) {
+                            Prihod prihod = new Prihod();
+                            prihod.setObrid(iduciId);
+                            prihod.setRbr(iduciRbr);
+                            prihod.setStv(i + 1);
+                            prihod.setPrihod(listaNeoPrih.get(i).getElementPlace().getVrPrihoda());
+                            prihod.setNaziv(listaNeoPrih.get(i).getElementPlace().getNaziv());
+                            prihod.setNeoporez("1"); // 1 - neoporezivi primitak ,0 - bruto
+                            prihod.setInternauj(null);
+                            prihod.setNazivuj(null);
+                            prihod.setSati(listaNeoPrih.get(i).getBrSati());
+                            prihod.setKoef(null);
+                            prihod.setOsnovica(null);
+                            prihod.setIznos(listaNeoPrih.get(i).getIznos());
+
+                            em.persist(prihod);
+                            brPrihoda++;
+                        }
+                    } else {
+                    }
+
+                    ZaposlenikType.Bruto xmlZaplBruto = xmlZaposlenik.getBruto();
                                 List<BrutoType> listaBruto = xmlZaplBruto.getElementBrutoPlace();
+                    
+                                if(listaBruto.size()!=0)
                                 for(int i=0;i<listaBruto.size();i++){
                                     Prihod prihod = new Prihod();
                                     prihod.setObrid(iduciId);
                                     prihod.setRbr(iduciRbr);
-                                    prihod.setStv(i+1);
+                                    prihod.setStv(brPrihoda+i+1);
                                     prihod.setPrihod(listaBruto.get(i).getElementPlace().getVrPrihoda());
                                     prihod.setNaziv(listaBruto.get(i).getElementPlace().getNaziv());
                                     prihod.setNeoporez("0");   // 0- bruto

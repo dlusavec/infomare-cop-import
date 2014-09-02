@@ -103,7 +103,7 @@ public class Forma extends javax.swing.JPanel {
     class Task extends SwingWorker<Void, Void> {
 
         @Override
-        public Void doInBackground()  {
+        public Void doInBackground()  {            
             EntityManagerFactory emf;
             EntityManager em = null;
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -425,17 +425,11 @@ public class Forma extends javax.swing.JPanel {
                                     
                                     em.persist(zaprac);
                                 }
-                            
-                    
-                   
+                                                                                         
                         em.flush();
-                        em.clear();
-                    
-
-                    
-                } 
-             
-             
+                        em.clear();   
+                                          
+                }                         
                 em.getTransaction().commit();
              
              
@@ -459,6 +453,7 @@ public class Forma extends javax.swing.JPanel {
                  try{
                     em.getTransaction().rollback();
                     }catch(Exception e1){
+                         e1.printStackTrace();
                         }   
                 
                 jProgressBar1.repaint();

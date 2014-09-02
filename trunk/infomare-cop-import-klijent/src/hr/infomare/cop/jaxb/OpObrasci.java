@@ -3,7 +3,6 @@ package hr.infomare.cop.jaxb;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -13,26 +12,29 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for anonymous complex type.
- *
+ * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- *
+ * 
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="poslodavac" type="{http://www.fina.hr/cop/opobrazac/v0.3}institucijaType"/>
- *         &lt;element name="zaposlenik" type="{http://www.fina.hr/cop/opobrazac/v0.3}zaposlenikType" maxOccurs="unbounded"/>
+ *         &lt;element name="poslodavac" type="{http://www.fina.hr/cop/opobrazac/v0.4}institucijaType"/>
+ *         &lt;element name="zaposlenik" type="{http://www.fina.hr/cop/opobrazac/v0.4}zaposlenikType" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- *
- *
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = { "poslodavac", "zaposlenik" })
+@XmlType(name = "", propOrder = {
+    "poslodavac",
+    "zaposlenik"
+})
 @XmlRootElement(name = "opObrasci")
 public class OpObrasci {
 
@@ -43,11 +45,11 @@ public class OpObrasci {
 
     /**
      * Gets the value of the poslodavac property.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link InstitucijaType }
-     *
+     *     
      */
     public InstitucijaType getPoslodavac() {
         return poslodavac;
@@ -55,11 +57,11 @@ public class OpObrasci {
 
     /**
      * Sets the value of the poslodavac property.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link InstitucijaType }
-     *
+     *     
      */
     public void setPoslodavac(InstitucijaType value) {
         this.poslodavac = value;
@@ -67,25 +69,25 @@ public class OpObrasci {
 
     /**
      * Gets the value of the zaposlenik property.
-     *
+     * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the zaposlenik property.
-     *
+     * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getZaposlenik().add(newItem);
      * </pre>
-     *
-     *
+     * 
+     * 
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link ZaposlenikType }
-     *
-     *
+     * 
+     * 
      */
     public List<ZaposlenikType> getZaposlenik() {
         if (zaposlenik == null) {

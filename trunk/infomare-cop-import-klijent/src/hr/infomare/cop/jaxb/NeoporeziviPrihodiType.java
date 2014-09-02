@@ -21,9 +21,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="elementPlace" type="{http://www.fina.hr/cop/opobrazac/v0.3}elementPlace"/>
- *         &lt;element name="brSati" type="{http://www.fina.hr/cop/opobrazac/v0.3}brSatiType" minOccurs="0"/>
- *         &lt;element name="iznos" type="{http://www.fina.hr/cop/opobrazac/v0.3}iznosType"/>
+ *         &lt;element name="elementPlace" type="{http://www.fina.hr/cop/opobrazac/v0.4}elementPlace"/>
+ *         &lt;element name="brSati" type="{http://www.fina.hr/cop/opobrazac/v0.4}brSatiType" minOccurs="0"/>
+ *         &lt;element name="iznos" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

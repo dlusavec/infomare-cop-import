@@ -63,13 +63,16 @@ public class Zaposl implements Serializable {
     private int rbr;
     @Column(nullable = false)
     private BigDecimal trosakpl;
+    @Column(nullable = true)
+    private BigDecimal isplrazl;
 
     public Zaposl() {
     }
 
-    public Zaposl(String adresa, BigDecimal bruto, Date datumisp, BigDecimal dohodak, BigDecimal dopriz, String ime, String internauj,
-                  BigDecimal isplata, String nazivoj, BigDecimal neoporez, BigDecimal neto, int obrid, BigDecimal obustave, String oib,
-                  BigDecimal olaksica, BigDecimal porezosn, BigDecimal poripri, String prezime, BigDecimal primanja, int rbr, BigDecimal trosakpl) {
+    public Zaposl(String adresa, BigDecimal bruto, Date datumisp, BigDecimal dohodak, BigDecimal dopriz, String ime,
+                  String internauj, BigDecimal isplata, String nazivoj, BigDecimal neoporez, BigDecimal neto, int obrid,
+                  BigDecimal obustave, String oib, BigDecimal olaksica, BigDecimal porezosn, BigDecimal poripri,
+                  String prezime, BigDecimal primanja, int rbr, BigDecimal trosakpl, BigDecimal isplrazl) {
         this.adresa = adresa;
         this.bruto = bruto;
         this.datumisp = datumisp;
@@ -91,6 +94,7 @@ public class Zaposl implements Serializable {
         this.primanja = primanja;
         this.rbr = rbr;
         this.trosakpl = trosakpl;
+        this.isplrazl = isplrazl;
     }
 
     public String getAdresa() {
@@ -259,5 +263,13 @@ public class Zaposl implements Serializable {
 
     public void setTrosakpl(BigDecimal trosakpl) {
         this.trosakpl = trosakpl;
+    }
+
+    public void setIsplrazl(BigDecimal isplrazl) {
+        this.isplrazl = isplrazl;
+    }
+
+    public BigDecimal getIsplrazl() {
+        return isplrazl;
     }
 }

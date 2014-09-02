@@ -241,7 +241,7 @@ public class Forma extends javax.swing.JPanel {
                                  zaposl.setObustave(xmlZaposlenik.getObustave().getUkIznos());
                                  zaposl.setIsplata(xmlZaposlenik.getIznosZaisplatu());
                                  zaposl.setTrosakpl(xmlZaposlenik.getUkTrosakPlace());
-                
+                                 zaposl.setIsplrazl(xmlZaposlenik.getIznosZaIsplatuRazlika());
                                  em.persist(zaposl);
                     
                     
@@ -261,7 +261,7 @@ public class Forma extends javax.swing.JPanel {
                                     obustava.setPosto(listaObustava.get(i).getPostotak());
                                     obustava.setOstrata(listaObustava.get(i).getBrPreostalihRata());
                                     obustava.setIznos(listaObustava.get(i).getIznos());
-                                    
+                                    obustava.setVjerovnik(listaObustava.get(i).getNazVjerovnika());
                                     
                                     em.persist(obustava);
                                 }

@@ -210,7 +210,7 @@
           <typeName>DECIMAL</typeName>
         </dataTypeID>
       </dataTypeUsage>
-      <notNull>false</notNull>
+      <notNull>true</notNull>
       <properties>
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
@@ -294,6 +294,22 @@
         </entry>
       </properties>
     </column>
+    <column>
+      <name>VJEROVNIK</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Long">200</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <providerClass>oracle.javatools.db.db2.DB2UniversalDatabaseImpl</providerClass>
+          <typeName>VARCHAR</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+    </column>
   </columns>
   <constraints>
     <constraint class="oracle.javatools.db.PKConstraint">
@@ -351,6 +367,42 @@
           </value>
         </entry>
       </properties>
+    </constraint>
+    <constraint class="oracle.javatools.db.PKConstraint">
+      <name>PK_OBRID_RBR_STV</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>OBRID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>OBUSTAVA</name>
+            <schemaName>COPDB</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>COPDB</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>RBR</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>OBUSTAVA</name>
+            <schemaName>COPDB</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>COPDB</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>STV</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>OBUSTAVA</name>
+            <schemaName>COPDB</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>COPDB</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
     </constraint>
   </constraints>
   <indexes>

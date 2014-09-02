@@ -39,12 +39,14 @@ public class Obustava implements Serializable {
     @Id
     @Column(nullable = false)
     private int stv;
+    @Column(nullable = true)
+    private String vjerovnik;
 
     public Obustava() {
     }
 
-    public Obustava(BigDecimal iznos, String naziv, int obrid, int obustava, String opis, Integer ostrata, BigDecimal posto,
-                    int rbr, BigDecimal saldo, int stv) {
+    public Obustava(BigDecimal iznos, String naziv, int obrid, int obustava, String opis, Integer ostrata,
+                    BigDecimal posto, int rbr, BigDecimal saldo, int stv, String vjerovnik) {
         this.iznos = iznos;
         this.naziv = naziv;
         this.obrid = obrid;
@@ -55,6 +57,7 @@ public class Obustava implements Serializable {
         this.rbr = rbr;
         this.saldo = saldo;
         this.stv = stv;
+        this.vjerovnik = vjerovnik;
     }
 
     public BigDecimal getIznos() {
@@ -135,5 +138,13 @@ public class Obustava implements Serializable {
 
     public void setStv(int stv) {
         this.stv = stv;
+    }
+
+    public void setVjerovnik(String vjerovnik) {
+        this.vjerovnik = vjerovnik;
+    }
+
+    public String getVjerovnik() {
+        return vjerovnik;
     }
 }

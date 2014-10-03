@@ -2,6 +2,7 @@
 package hr.infomare.cop.jaxb;
 
 import java.math.BigDecimal;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -10,11 +11,11 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * Tip za bruto plaæu.
- * 
+ *
  * <p>Java class for brutoType complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="brutoType">
  *   &lt;complexContent>
@@ -57,19 +58,13 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "brutoType", propOrder = {
-    "elementPlace",
-    "internaOznakaUJ",
-    "nazivUJ",
-    "brSati",
-    "koeficijent",
-    "osnovica",
-    "iznos"
-})
+         "elementPlace", "internaOznakaUJ", "nazivUJ", "brSati", "koeficijent", "osnovica", "iznos"
+    })
 public class BrutoType {
 
     @XmlElement(required = true)
@@ -85,11 +80,11 @@ public class BrutoType {
 
     /**
      * Gets the value of the elementPlace property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link ElementPlace }
-     *     
+     *
      */
     public ElementPlace getElementPlace() {
         return elementPlace;
@@ -97,11 +92,11 @@ public class BrutoType {
 
     /**
      * Sets the value of the elementPlace property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link ElementPlace }
-     *     
+     *
      */
     public void setElementPlace(ElementPlace value) {
         this.elementPlace = value;
@@ -109,11 +104,11 @@ public class BrutoType {
 
     /**
      * Gets the value of the internaOznakaUJ property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getInternaOznakaUJ() {
         return internaOznakaUJ;
@@ -121,11 +116,11 @@ public class BrutoType {
 
     /**
      * Sets the value of the internaOznakaUJ property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setInternaOznakaUJ(String value) {
         this.internaOznakaUJ = value;
@@ -133,11 +128,11 @@ public class BrutoType {
 
     /**
      * Gets the value of the nazivUJ property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getNazivUJ() {
         return nazivUJ;
@@ -145,11 +140,11 @@ public class BrutoType {
 
     /**
      * Sets the value of the nazivUJ property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setNazivUJ(String value) {
         this.nazivUJ = value;
@@ -157,11 +152,11 @@ public class BrutoType {
 
     /**
      * Gets the value of the brSati property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link BigDecimal }
-     *     
+     *
      */
     public BigDecimal getBrSati() {
         return brSati;
@@ -169,11 +164,11 @@ public class BrutoType {
 
     /**
      * Sets the value of the brSati property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link BigDecimal }
-     *     
+     *
      */
     public void setBrSati(BigDecimal value) {
         this.brSati = value;
@@ -181,11 +176,11 @@ public class BrutoType {
 
     /**
      * Gets the value of the koeficijent property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link BigDecimal }
-     *     
+     *
      */
     public BigDecimal getKoeficijent() {
         return koeficijent;
@@ -193,11 +188,11 @@ public class BrutoType {
 
     /**
      * Sets the value of the koeficijent property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link BigDecimal }
-     *     
+     *
      */
     public void setKoeficijent(BigDecimal value) {
         this.koeficijent = value;
@@ -205,11 +200,11 @@ public class BrutoType {
 
     /**
      * Gets the value of the osnovica property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link BigDecimal }
-     *     
+     *
      */
     public BigDecimal getOsnovica() {
         return osnovica;
@@ -217,11 +212,11 @@ public class BrutoType {
 
     /**
      * Sets the value of the osnovica property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link BigDecimal }
-     *     
+     *
      */
     public void setOsnovica(BigDecimal value) {
         this.osnovica = value;
@@ -229,11 +224,11 @@ public class BrutoType {
 
     /**
      * Gets the value of the iznos property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link BigDecimal }
-     *     
+     *
      */
     public BigDecimal getIznos() {
         return iznos;
@@ -241,11 +236,11 @@ public class BrutoType {
 
     /**
      * Sets the value of the iznos property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link BigDecimal }
-     *     
+     *
      */
     public void setIznos(BigDecimal value) {
         this.iznos = value;

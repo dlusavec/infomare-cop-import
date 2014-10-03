@@ -21,10 +21,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="elementPlace" type="{http://www.fina.hr/cop/opobrazac/v0.4}elementPlace"/>
- *         &lt;element name="stopa" type="{http://www.fina.hr/cop/opobrazac/v0.4}stopaType"/>
- *         &lt;element name="osnovica" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType"/>
- *         &lt;element name="iznos" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType"/>
+ *         &lt;element name="elementPlace" type="{http://www.fina.hr/cop/opobrazac/v0.5}elementPlace"/>
+ *         &lt;element name="stopa" type="{http://www.fina.hr/cop/opobrazac/v0.5}stopaType"/>
+ *         &lt;element name="osnovica" type="{http://www.fina.hr/cop/opobrazac/v0.5}iznosType"/>
+ *         &lt;element name="iznos" type="{http://www.fina.hr/cop/opobrazac/v0.5}iznosType"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

@@ -9,17 +9,17 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * Tip za podatke poslodavca.
- * 
+ *
  * <p>Java class for institucijaType complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="institucijaType">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="oib" type="{http://www.fina.hr/cop/opobrazac/v0.4}oibType"/>
+ *         &lt;element name="oib" type="{http://www.fina.hr/cop/opobrazac/v0.5}oibType"/>
  *         &lt;element name="naziv">
  *           &lt;simpleType>
  *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
@@ -37,8 +37,8 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;/restriction>
  *           &lt;/simpleType>
  *         &lt;/element>
- *         &lt;element name="razdobljePocetak" type="{http://www.fina.hr/cop/opobrazac/v0.4}datumType"/>
- *         &lt;element name="razdobljeZavrsetak" type="{http://www.fina.hr/cop/opobrazac/v0.4}datumType"/>
+ *         &lt;element name="razdobljePocetak" type="{http://www.fina.hr/cop/opobrazac/v0.5}datumType"/>
+ *         &lt;element name="razdobljeZavrsetak" type="{http://www.fina.hr/cop/opobrazac/v0.5}datumType"/>
  *         &lt;element name="mjBrSati">
  *           &lt;simpleType>
  *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}int">
@@ -48,7 +48,7 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;/restriction>
  *           &lt;/simpleType>
  *         &lt;/element>
- *         &lt;element name="datumObracuna" type="{http://www.fina.hr/cop/opobrazac/v0.4}datumType"/>
+ *         &lt;element name="datumObracuna" type="{http://www.fina.hr/cop/opobrazac/v0.5}datumType"/>
  *         &lt;element name="isplata">
  *           &lt;simpleType>
  *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}boolean">
@@ -56,27 +56,20 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;/restriction>
  *           &lt;/simpleType>
  *         &lt;/element>
- *         &lt;element name="brRacInst" type="{http://www.fina.hr/cop/opobrazac/v0.4}brojRacunaType" minOccurs="0"/>
+ *         &lt;element name="brRacInst" type="{http://www.fina.hr/cop/opobrazac/v0.5}brojRacunaType" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "institucijaType", propOrder = {
-    "oib",
-    "naziv",
-    "adresa",
-    "razdobljePocetak",
-    "razdobljeZavrsetak",
-    "mjBrSati",
-    "datumObracuna",
-    "isplata",
-    "brRacInst"
-})
+         "oib", "naziv", "adresa", "razdobljePocetak", "razdobljeZavrsetak", "mjBrSati", "datumObracuna", "isplata",
+         "brRacInst"
+    })
 public class InstitucijaType {
 
     @XmlElement(required = true)
@@ -97,11 +90,11 @@ public class InstitucijaType {
 
     /**
      * Gets the value of the oib property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getOib() {
         return oib;
@@ -109,11 +102,11 @@ public class InstitucijaType {
 
     /**
      * Sets the value of the oib property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setOib(String value) {
         this.oib = value;
@@ -121,11 +114,11 @@ public class InstitucijaType {
 
     /**
      * Gets the value of the naziv property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getNaziv() {
         return naziv;
@@ -133,11 +126,11 @@ public class InstitucijaType {
 
     /**
      * Sets the value of the naziv property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setNaziv(String value) {
         this.naziv = value;
@@ -145,11 +138,11 @@ public class InstitucijaType {
 
     /**
      * Gets the value of the adresa property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getAdresa() {
         return adresa;
@@ -157,11 +150,11 @@ public class InstitucijaType {
 
     /**
      * Sets the value of the adresa property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setAdresa(String value) {
         this.adresa = value;
@@ -169,11 +162,11 @@ public class InstitucijaType {
 
     /**
      * Gets the value of the razdobljePocetak property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getRazdobljePocetak() {
         return razdobljePocetak;
@@ -181,11 +174,11 @@ public class InstitucijaType {
 
     /**
      * Sets the value of the razdobljePocetak property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setRazdobljePocetak(String value) {
         this.razdobljePocetak = value;
@@ -193,11 +186,11 @@ public class InstitucijaType {
 
     /**
      * Gets the value of the razdobljeZavrsetak property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getRazdobljeZavrsetak() {
         return razdobljeZavrsetak;
@@ -205,11 +198,11 @@ public class InstitucijaType {
 
     /**
      * Sets the value of the razdobljeZavrsetak property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setRazdobljeZavrsetak(String value) {
         this.razdobljeZavrsetak = value;
@@ -217,7 +210,7 @@ public class InstitucijaType {
 
     /**
      * Gets the value of the mjBrSati property.
-     * 
+     *
      */
     public int getMjBrSati() {
         return mjBrSati;
@@ -225,7 +218,7 @@ public class InstitucijaType {
 
     /**
      * Sets the value of the mjBrSati property.
-     * 
+     *
      */
     public void setMjBrSati(int value) {
         this.mjBrSati = value;
@@ -233,11 +226,11 @@ public class InstitucijaType {
 
     /**
      * Gets the value of the datumObracuna property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getDatumObracuna() {
         return datumObracuna;
@@ -245,11 +238,11 @@ public class InstitucijaType {
 
     /**
      * Sets the value of the datumObracuna property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setDatumObracuna(String value) {
         this.datumObracuna = value;
@@ -257,7 +250,7 @@ public class InstitucijaType {
 
     /**
      * Gets the value of the isplata property.
-     * 
+     *
      */
     public boolean isIsplata() {
         return isplata;
@@ -265,7 +258,7 @@ public class InstitucijaType {
 
     /**
      * Sets the value of the isplata property.
-     * 
+     *
      */
     public void setIsplata(boolean value) {
         this.isplata = value;
@@ -273,11 +266,11 @@ public class InstitucijaType {
 
     /**
      * Gets the value of the brRacInst property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getBrRacInst() {
         return brRacInst;
@@ -285,11 +278,11 @@ public class InstitucijaType {
 
     /**
      * Sets the value of the brRacInst property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setBrRacInst(String value) {
         this.brRacInst = value;

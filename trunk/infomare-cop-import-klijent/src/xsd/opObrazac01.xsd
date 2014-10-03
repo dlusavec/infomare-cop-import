@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 sp1 (x64) (http://www.altova.com) by Marko Lackovic (Financijska agencija) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.fina.hr/cop/opobrazac/v0.5" targetNamespace="http://www.fina.hr/cop/opobrazac/v0.5">
+	<xs:element name="opObrasci">
+		<xs:annotation>
+			<xs:documentation>OP obrasci za zaposlenike.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="poslodavac" type="institucijaType"/>
+				<xs:element name="zaposlenik" type="zaposlenikType" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="elementPlace">
+		<xs:sequence>
+			<xs:element name="vrPrihoda">
+				<xs:annotation>
+					<xs:documentation>Id elementa plaće.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:totalDigits value="9"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="naziv">
+				<xs:annotation>
+					<xs:documentation>Naziv elementa plaće.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="200"/>
+						<xs:whiteSpace value="collapse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="datumType">
+		<xs:annotation>
+			<xs:documentation>Tip za datum.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(0[1-9]|[12][0-9]|3[01])[.](0[1-9]|1[012])[.](19|20)\d\d[.]"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="oibType">
+		<xs:annotation>
+			<xs:documentation>Tip za OIB.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse"/>
+			<xs:length value="11"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="razdobljeType">
+		<xs:annotation>
+			<xs:documentation>Tip za razdoblja u formatu GGMM.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="4"/>
+			<xs:pattern value="(\d{2})(0[0-9]|1[012])"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="koeficijentType">
+		<xs:annotation>
+			<xs:documentation>Tip za koeficijent elementa plaće.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:totalDigits value="10"/>
+			<xs:fractionDigits value="6"/>
+			<xs:maxInclusive value="9999.999999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="iznosType">
+		<xs:annotation>
+			<xs:documentation>Tip za iznos na dvije decimale.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="15"/>
+			<xs:fractionDigits value="6"/>
+			<xs:maxInclusive value="9999999999.999999"/>
+			<xs:minInclusive value="-999999999.999999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="iznosNegPozType">
+		<xs:annotation>
+			<xs:documentation>Iznosi koji mogu biti pozitivni i negativni</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="-999999999.999999"/>
+			<xs:maxInclusive value="9999999999.999999"/>
+			<xs:totalDigits value="15"/>
+			<xs:fractionDigits value="6"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="stopaType">
+		<xs:annotation>
+			<xs:documentation>Tip za postotak.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="10"/>
+			<xs:fractionDigits value="6"/>
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999.999999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="brSatiType">
+		<xs:annotation>
+			<xs:documentation>Tip za broj sati.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="10"/>
+			<xs:fractionDigits value="6"/>
+			<xs:whiteSpace value="collapse"/>
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999.999999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="datumShortType">
+		<xs:annotation>
+			<xs:documentation>Tip za datum format dd.mm.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(0[1-9]|[12][0-9]|3[01])[.](0[1-9]|1[012])[.]"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="brojRacunaType">
+		<xs:annotation>
+			<xs:documentation>Tip za broj računa IBAN i stari format.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="(\d{7}\-\d{10})|(HR()\d{19})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="doprinosNaType">
+		<xs:annotation>
+			<xs:documentation>Tip az doprinose na plaću.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="elementPlace" type="elementPlace"/>
+			<xs:element name="stopa" type="stopaType"/>
+			<xs:element name="iznos" type="iznosType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="doprinosIzType">
+		<xs:annotation>
+			<xs:documentation>Tip za doprinose iz plaće.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="elementPlace" type="elementPlace"/>
+			<xs:element name="stopa" type="stopaType"/>
+			<xs:element name="iznos" type="iznosType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="brutoType">
+		<xs:annotation>
+			<xs:documentation>Tip za bruto plaću.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="elementPlace" type="elementPlace"/>
+			<xs:element name="internaOznakaUJ" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="20"/>
+						<xs:whiteSpace value="collapse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="nazivUJ" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="200"/>
+						<xs:whiteSpace value="collapse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="brSati" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:totalDigits value="10"/>
+						<xs:fractionDigits value="6"/>
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="9999.999999"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="koeficijent" type="koeficijentType"/>
+			<xs:element name="osnovica" type="iznosType" minOccurs="0"/>
+			<xs:element name="iznos" type="iznosType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="neoporeziviPrihodiType">
+		<xs:annotation>
+			<xs:documentation>Tip za neoporezive prihode.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="elementPlace" type="elementPlace"/>
+			<xs:element name="brSati" type="brSatiType" minOccurs="0"/>
+			<xs:element name="iznos" type="iznosType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="porezPrirezType">
+		<xs:annotation>
+			<xs:documentation>Tip za porez na dohodak i prirez poreza.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="elementPlace" type="elementPlace"/>
+			<xs:element name="stopa" type="stopaType"/>
+			<xs:element name="osnovica" type="iznosType"/>
+			<xs:element name="iznos" type="iznosType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="olaksiceType">
+		<xs:annotation>
+			<xs:documentation>Tip za olakšice na plaću.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="elementPlace" type="elementPlace"/>
+			<xs:element name="koeficijent" type="koeficijentType"/>
+			<xs:element name="iznos" type="iznosType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="obustaveType">
+		<xs:annotation>
+			<xs:documentation>Tip za obustave.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="elementPlace" type="elementPlace"/>
+			<xs:element name="opisObustave">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="200"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="nazVjerovnika">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="200"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="saldo" type="iznosType"/>
+			<xs:element name="postotak" type="stopaType" minOccurs="0"/>
+			<xs:element name="brPreostalihRata" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:totalDigits value="4"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="iznos" type="iznosType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="zaposlenikType">
+		<xs:annotation>
+			<xs:documentation>Tip za osnovne podatke zaposlenika.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="oib" type="oibType">
+				<xs:annotation>
+					<xs:documentation>Oib zaposlenika.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ime">
+				<xs:annotation>
+					<xs:documentation>Ime zaposlenika.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="prezime">
+				<xs:annotation>
+					<xs:documentation>Prezime zaposlenika.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="adresa" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Adresa zaposlenika.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="200"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="racuniZaposlenika" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="brRacZap" type="brojRacunaType">
+							<xs:annotation>
+								<xs:documentation>Broj računa zaposlenika.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="racunBanka">
+							<xs:annotation>
+								<xs:documentation>Naziv banke.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:minLength value="1"/>
+									<xs:maxLength value="200"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="ukIznos" type="iznosType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="internaOznakaUJ" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Interna oznaka ustrojstvene jedinice.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="20"/>
+						<xs:whiteSpace value="collapse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="nazivUJ" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Naziv ustrojstvene jedinice.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="200"/>
+						<xs:whiteSpace value="collapse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="datumIsplate" type="datumType" minOccurs="0"/>
+			<xs:element name="parametriObracuna" type="parametriObracunaType" maxOccurs="unbounded"/>
+			<xs:element name="bruto">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="elementBrutoPlace" type="brutoType" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="ukIznos" type="iznosType">
+							<xs:annotation>
+								<xs:documentation>ukupni iznos bruto plaće.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="doprinosIzPlace">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="elementDoprinosIz" type="doprinosIzType" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="ukIznos" type="iznosType">
+							<xs:annotation>
+								<xs:documentation>ukupni iznos doprinosa iz plaće.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="dohodak" type="iznosType"/>
+			<xs:element name="olaksice">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="elementOlaksice" type="olaksiceType" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="ukIznos" type="iznosType">
+							<xs:annotation>
+								<xs:documentation>ukupni iznos olakšice.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="poreznaOsnovica" type="iznosType"/>
+			<xs:element name="porezNaDohodakIPrirez">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="elementPorezPrirez" type="porezPrirezType" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="ukIznos" type="iznosType">
+							<xs:annotation>
+								<xs:documentation>Ukupni iznos poreza na dohodak i prireza.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="neto" type="iznosType"/>
+			<xs:element name="neoporeziviPrihodi">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="elementNeoporezPrih" type="neoporeziviPrihodiType" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="ukIznos" type="iznosType">
+							<xs:annotation>
+								<xs:documentation>Ukupni iznos neoporezivog dijela plaće.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ukPrimanja" type="iznosType"/>
+			<xs:element name="obustave">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="elementObustave" type="obustaveType" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="ukIznos" type="iznosType">
+							<xs:annotation>
+								<xs:documentation>Ukupni iznos obustava.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="iznosZaisplatu" type="iznosType"/>
+			<xs:element name="iznosZaIsplatuRazlika" type="iznosNegPozType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Iznos razlike za isplatu je neobavezan podatak koji se popunjva kod prikaza iznosa razlike korektivnog obracuna</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="doprinosNaPlacu">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="elementDoprinosNa" type="doprinosNaType" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="ukIznos" type="iznosType">
+							<xs:annotation>
+								<xs:documentation>Ukupni iznos doprinosa na plaću.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ukTrosakPlace" type="iznosType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="institucijaType">
+		<xs:annotation>
+			<xs:documentation>Tip za podatke poslodavca.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="oib" type="oibType">
+				<xs:annotation>
+					<xs:documentation>Oib poslodavca.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="naziv">
+				<xs:annotation>
+					<xs:documentation>Naziv poslodavca.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="200"/>
+						<xs:whiteSpace value="collapse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="adresa">
+				<xs:annotation>
+					<xs:documentation>Adresa poslodavca.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="200"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="razdobljePocetak" type="datumType">
+				<xs:annotation>
+					<xs:documentation>Datum početka obračuna.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="razdobljeZavrsetak" type="datumType">
+				<xs:annotation>
+					<xs:documentation>Datum završetka obračuna.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mjBrSati">
+				<xs:annotation>
+					<xs:documentation>Planirani redoviti fond sati.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:totalDigits value="4"/>
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="9999"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="datumObracuna" type="datumType">
+				<xs:annotation>
+					<xs:documentation>Datum kreiranja obračuna.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="isplata">
+				<xs:annotation>
+					<xs:documentation>Oznaka da li je isplata završena. false - prije isplate, true - nakon isplate.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:boolean">
+						<xs:whiteSpace value="collapse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="brRacInst" type="brojRacunaType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Broj računa institucije</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="parametriObracunaType">
+		<xs:sequence>
+			<xs:element name="vrParametra">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="200"/>
+						<xs:whiteSpace value="collapse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="period" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="datumOd" type="datumShortType"/>
+						<xs:element name="datumDo" type="datumShortType"/>
+						<xs:element name="opis" minOccurs="0">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:minLength value="1"/>
+									<xs:maxLength value="200"/>
+									<xs:whiteSpace value="collapse"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

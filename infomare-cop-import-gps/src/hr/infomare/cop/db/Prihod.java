@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Entity
 @NamedQueries({ @NamedQuery(name = "Prihod.findAll", query = "select o from Prihod o") })
 @IdClass(PrihodPK.class)
-@Table(schema = "COPDB")
+@Table(schema = "DBO", name = "FKCOPPRIHOD")
 public class Prihod implements Serializable {
     private static final long serialVersionUID = -1230276821269286219L;
     private String internauj;

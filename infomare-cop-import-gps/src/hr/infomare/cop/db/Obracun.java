@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "Obracun.findAll", query = "select o from Obracun o") })
-@Table(schema = "COPDB")
+@Table(schema = "DBO", name = "FKCOPOBRACUN")
 public class Obracun implements Serializable {
     private static final long serialVersionUID = 7664925003666898483L;
     private Integer k50god;

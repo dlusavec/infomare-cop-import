@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Entity
 @NamedQueries({ @NamedQuery(name = "Obustava.findAll", query = "select o from Obustava o") })
 @IdClass(ObustavaPK.class)
-@Table(schema = "COPDB")
+@Table(schema = "DBO", name = "FKCOPOBUSTAVA")
 public class Obustava implements Serializable {
     private static final long serialVersionUID = -7572052302026979576L;
     @Column(nullable = false)

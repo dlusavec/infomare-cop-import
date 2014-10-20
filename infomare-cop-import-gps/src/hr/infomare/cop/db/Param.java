@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Entity
 @NamedQueries({ @NamedQuery(name = "Param.findAll", query = "select o from Param o") })
 @IdClass(ParamPK.class)
-@Table(schema = "COPDB")
+@Table(schema = "DBO", name = "FKCOPPARAM")
 public class Param implements Serializable {
     private static final long serialVersionUID = 3204663152931666863L;
     @Column(nullable = false)

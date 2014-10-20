@@ -51,6 +51,7 @@
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
          <string v="Database"/>
+         <string v="Database-Modeling"/>
          <string v="Java"/>
          <string v="TopLink"/>
          <string v="XML"/>
@@ -76,7 +77,11 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <url n="id" path="../../../../Users/damirl/AppData/Roaming/JDeveloper/system12.1.2.0.40.66.68/o.jdeveloper/DB2Driver.library"/>
+            <value n="id" v="Oracle JDBC"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <url n="id" path="../../../../Users/damirl/AppData/Roaming/JDeveloper/system12.1.2.0.40.66.68/o.jdeveloper/SQLSERVER_JDBC.library"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>
@@ -90,7 +95,11 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <url n="id" path="../../../../Users/damirl/AppData/Roaming/JDeveloper/system12.1.2.0.40.66.68/o.jdeveloper/DB2Driver.library"/>
+            <value n="id" v="Oracle JDBC"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <url n="id" path="../../../../Users/damirl/AppData/Roaming/JDeveloper/system12.1.2.0.40.66.68/o.jdeveloper/SQLSERVER_JDBC.library"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>

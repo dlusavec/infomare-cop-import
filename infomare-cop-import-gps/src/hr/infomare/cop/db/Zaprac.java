@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Entity
 @NamedQueries({ @NamedQuery(name = "Zaprac.findAll", query = "select o from Zaprac o") })
 @IdClass(ZapracPK.class)
-@Table(schema = "COPDB")
+@Table(schema = "DBO", name = "FKCOPZAPRAC")
 public class Zaprac implements Serializable {
     private static final long serialVersionUID = -927155380376703878L;
     private BigDecimal iznos;

@@ -15,7 +15,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "Poduzece.findAll", query = "select o from Poduzece o") })
-@Table(schema = "COPDB")
+@Table(schema = "DBO", name = "FKCOPPODUZECE")
 public class Poduzece implements Serializable {
     private static final long serialVersionUID = -6879717503509118984L;
     @Column(nullable = false)

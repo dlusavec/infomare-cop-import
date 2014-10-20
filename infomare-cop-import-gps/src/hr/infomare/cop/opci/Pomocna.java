@@ -106,23 +106,23 @@ public class Pomocna {
             // Oracle
             //jdbc:oracle:thin:@//[HOST][:PORT]/SERVICE
             // String url = "jdbc:oracle:thin:@//myhost:1521/orcl";            
-            if (prop.getProperty("rdbms").equals("O")){
+            if (Aes.decrypt(prop.getProperty("rdbms")).equals("O")){
                 hm.put(PersistenceUnitProperties.JDBC_DRIVER, "oracle.jdbc.driver.OracleDriver"); 
-                hm.put(PersistenceUnitProperties.JDBC_URL, "jdbc:oracle:thin:@//"+Aes.decrypt(prop.getProperty("server"))+"/"+prop.getProperty("baza"));   
+                hm.put(PersistenceUnitProperties.JDBC_URL, "jdbc:oracle:thin:@//"+Aes.decrypt(prop.getProperty("server"))+"/"+Aes.decrypt(prop.getProperty("baza")));   
             }
             
             //SQL Server
             //jdbc:sqlserver://LEUT;user=magicapp;password=magicapp;databaseName=GPSDB;
-            if (prop.getProperty("rdbms").equals("S")){
+            if (Aes.decrypt(prop.getProperty("rdbms")).equals("S")){
                 hm.put(PersistenceUnitProperties.JDBC_DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver"); 
-                hm.put(PersistenceUnitProperties.JDBC_URL, "jdbc:oracle:thin:@//"+Aes.decrypt(prop.getProperty("server"))+";"+prop.getProperty("baza"));   
+                hm.put(PersistenceUnitProperties.JDBC_URL, "jdbc:sqlserver://"+Aes.decrypt(prop.getProperty("server"))+";databaseName="+Aes.decrypt(prop.getProperty("baza")));   
             }  
 
             
             return hm;
         }
     
-    public static void spremiPostavke(String server, String korisnickoIme, String lozinka){
+    public static void spremiPostavke(String rdbms, String baza, String server, String korisnickoIme, String lozinka){
         Properties prop = new Properties();
         OutputStream output = null;
         
@@ -130,7 +130,8 @@ public class Pomocna {
         
                 output = new FileOutputStream("postavke.properties");
         
-        
+                prop.setProperty("rdbms", Aes.encrypt(rdbms));
+                prop.setProperty("baza", Aes.encrypt(baza));
                 prop.setProperty("server", Aes.encrypt(server));
                 prop.setProperty("korisnik", Aes.encrypt(korisnickoIme));
                 prop.setProperty("lozinka", Aes.encrypt(lozinka));

@@ -50,7 +50,11 @@
    <value n="defaultPackage" v="hr.infomare.cop"/>
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
+         <string v="Database"/>
          <string v="Java"/>
+         <string v="TopLink"/>
+         <string v="XML"/>
+         <string v="XML_SCHEMA"/>
       </list>
    </hash>
    <hash n="oracle.jdeveloper.compiler.OjcConfiguration">
@@ -60,6 +64,36 @@
    <hash n="oracle.jdeveloper.model.J2eeSettings">
       <value n="j2eeWebAppName" v="infomare-cop-import-infomare-cop-import-gps-webapp"/>
       <value n="j2eeWebContextRoot" v="infomare-cop-import-infomare-cop-import-gps-context-root"/>
+   </hash>
+   <hash n="oracle.jdevimpl.config.JProjectLibraries">
+      <list n="exportedReferences">
+         <hash>
+            <value n="id" v="TopLink"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Oracle XML Parser v2"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <url n="id" path="../../../../Users/damirl/AppData/Roaming/JDeveloper/system12.1.2.0.40.66.68/o.jdeveloper/DB2Driver.library"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+      </list>
+      <list n="libraryReferences">
+         <hash>
+            <value n="id" v="TopLink"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Oracle XML Parser v2"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <url n="id" path="../../../../Users/damirl/AppData/Roaming/JDeveloper/system12.1.2.0.40.66.68/o.jdeveloper/DB2Driver.library"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+      </list>
    </hash>
    <hash n="oracle.jdevimpl.config.JProjectPaths">
       <url n="outputDirectory" path="classes/"/>

@@ -26,6 +26,7 @@
       <string v="oracle.jdeveloper.model.PathsConfiguration/ResourceBundlesContentSet"/>
    </list>
    <list n="listOfChildren">
+      <hash><url n="URL" path="infomare-cop-import-gps/infomare-cop-import-gps.jpr"/></hash>
       <hash><url n="URL" path="infomare-cop-import-klijent/infomare-cop-import-klijent.jpr"/></hash>
    </list>
 </jws:workspace>

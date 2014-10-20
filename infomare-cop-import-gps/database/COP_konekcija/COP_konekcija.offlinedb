@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ProviderSettings xmlns="http://xmlns.oracle.com/ide/hash">
+   <hash n="dataTypeSettings">
+      <value n="sourceKey" v="oracle.javatools.db.db2.DB2UniversalDatabaseImpl"/>
+   </hash>
+   <value n="id" v="a44e6f4e-4286-492d-9dca-0f6576d604c3"/>
+   <value n="name" v="COP_konekcija"/>
+</ProviderSettings>

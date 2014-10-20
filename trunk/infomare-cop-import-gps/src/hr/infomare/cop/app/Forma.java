@@ -166,6 +166,7 @@ public class Forma extends javax.swing.JPanel {
                 obracun.setK50nal(null);
                 obracun.setStatus(10);
                 em.persist(obracun);
+                em.flush();
                 
                 
               InstitucijaType xmlPoslodavac = obrasci.getPoslodavac();
@@ -185,7 +186,7 @@ public class Forma extends javax.swing.JPanel {
                 poduzece.setRacunisp(xmlPoslodavac.getBrRacInst());
                 
                 em.persist(poduzece);
-                
+                em.flush();
                 
                 
                 
@@ -243,6 +244,7 @@ public class Forma extends javax.swing.JPanel {
                                  zaposl.setTrosakpl(xmlZaposlenik.getUkTrosakPlace());
                                  zaposl.setIsplrazl(xmlZaposlenik.getIznosZaIsplatuRazlika());
                                  em.persist(zaposl);
+                                 em.flush();
                     
                     
                     
@@ -264,6 +266,7 @@ public class Forma extends javax.swing.JPanel {
                                     obustava.setVjerovnik(listaObustava.get(i).getNazVjerovnika());
                                     
                                     em.persist(obustava);
+                                    em.flush();
                                 }
                     
                     
@@ -290,6 +293,7 @@ public class Forma extends javax.swing.JPanel {
                                     poripri.setIznos(listaPorPri.get(i).getIznos());
                                     
                                     em.persist(poripri);
+                                    em.flush();
                                 }
                     
                     
@@ -307,6 +311,7 @@ public class Forma extends javax.swing.JPanel {
                                     olaksica.setIznos(listaOlaksica.get(i).getIznos());
                                     
                                     em.persist(olaksica);
+                                    em.flush();
                                 }
                                 
                                 
@@ -324,6 +329,7 @@ public class Forma extends javax.swing.JPanel {
                                     doprinos.setStopa(listaDoprinosiIz.get(i).getStopa());
                                     doprinos.setIznos(listaDoprinosiIz.get(i).getIznos());
                                     em.persist(doprinos);
+                                    em.flush();
                                     
                                 }
                                 
@@ -340,6 +346,7 @@ public class Forma extends javax.swing.JPanel {
                                     doprinos.setStopa(listaDoprinosiNa.get(i).getStopa());
                                     doprinos.setIznos(listaDoprinosiNa.get(i).getIznos());
                                     em.persist(doprinos);
+                                    em.flush();
                                 }
                                     
                                 
@@ -364,6 +371,7 @@ public class Forma extends javax.swing.JPanel {
                             prihod.setIznos(listaNeoPrih.get(i).getIznos());
 
                             em.persist(prihod);
+                            em.flush();
                             brPrihoda++;
                         }
                     } else {
@@ -389,6 +397,7 @@ public class Forma extends javax.swing.JPanel {
                                     prihod.setIznos(listaBruto.get(i).getIznos());
                                     
                                     em.persist(prihod);
+                                    em.flush();
                                 }
                     
                     
@@ -409,6 +418,7 @@ public class Forma extends javax.swing.JPanel {
                                     param.setDatumdo(listaPeriod.get(j).getDatumDo());
                                     param.setOpis(listaPeriod.get(j).getOpis());
                                     em.persist(param);
+                                    em.flush();
                                     }
                             }  
                                     
@@ -424,9 +434,9 @@ public class Forma extends javax.swing.JPanel {
                                     zaprac.setIznos(listaRacuna.get(i).getUkIznos());
                                     
                                     em.persist(zaprac);
+                                    em.flush();
                                 }
-                                                                                         
-                        em.flush();
+                                                                                                               
                         em.clear();   
                                           
                 }                         

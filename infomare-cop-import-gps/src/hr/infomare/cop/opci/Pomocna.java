@@ -93,8 +93,7 @@ public class Pomocna {
 
         
                 input = new FileInputStream("postavke.properties");
-                 prop.load(input);
-        
+                 prop.load(input);  
                 
             //Pomocna.porukaInfo(null,  Aes.decrypt(prop.getProperty("korisnik")));
             //Pomocna.porukaInfo(null, Aes.decrypt(prop.getProperty("lozinka")));
@@ -102,8 +101,22 @@ public class Pomocna {
 
                                 
             hm.put(PersistenceUnitProperties.JDBC_USER, Aes.decrypt(prop.getProperty("korisnik")));
-            hm.put(PersistenceUnitProperties.JDBC_PASSWORD, Aes.decrypt(prop.getProperty("lozinka")));
-            hm.put(PersistenceUnitProperties.JDBC_URL, "jdbc:as400://"+Aes.decrypt(prop.getProperty("server"))+";prompt=false");
+            hm.put(PersistenceUnitProperties.JDBC_PASSWORD, Aes.decrypt(prop.getProperty("lozinka")));             
+            
+            // Oracle
+            //jdbc:oracle:thin:@//[HOST][:PORT]/SERVICE
+            // String url = "jdbc:oracle:thin:@//myhost:1521/orcl";            
+            if (prop.getProperty("rdbms").equals("O")){
+                hm.put(PersistenceUnitProperties.JDBC_DRIVER, "oracle.jdbc.driver.OracleDriver"); 
+                hm.put(PersistenceUnitProperties.JDBC_URL, "jdbc:oracle:thin:@//"+Aes.decrypt(prop.getProperty("server"))+"/"+prop.getProperty("baza"));   
+            }
+            
+            //SQL Server
+            //jdbc:sqlserver://LEUT;user=magicapp;password=magicapp;databaseName=GPSDB;
+            if (prop.getProperty("rdbms").equals("S")){
+                hm.put(PersistenceUnitProperties.JDBC_DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver"); 
+                hm.put(PersistenceUnitProperties.JDBC_URL, "jdbc:oracle:thin:@//"+Aes.decrypt(prop.getProperty("server"))+";"+prop.getProperty("baza"));   
+            }  
 
             
             return hm;

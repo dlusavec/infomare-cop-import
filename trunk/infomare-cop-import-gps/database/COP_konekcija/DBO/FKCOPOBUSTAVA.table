@@ -1,6 +1,6 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <table xmlns="http://xmlns.oracle.com/jdeveloper/1211/offlinedb">
-  <name>DOPRINOS</name>
+  <name>FKCOPOBUSTAVA</name>
   <columns>
     <column>
       <name>OBRID</name>
@@ -17,7 +17,7 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>OBRID</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>DOPRINOS</name>
+              <name>OBUSTAVA</name>
               <schemaName>COPDB</schemaName>
               <type>TABLE</type>
             </parent>
@@ -41,7 +41,7 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>RBR</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>DOPRINOS</name>
+              <name>OBUSTAVA</name>
               <schemaName>COPDB</schemaName>
               <type>TABLE</type>
             </parent>
@@ -65,7 +65,7 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>STV</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>DOPRINOS</name>
+              <name>OBUSTAVA</name>
               <schemaName>COPDB</schemaName>
               <type>TABLE</type>
             </parent>
@@ -75,7 +75,7 @@
       </properties>
     </column>
     <column>
-      <name>DOPRINOS</name>
+      <name>OBUSTAVA</name>
       <dataTypeUsage>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
           <providerClass>oracle.javatools.db.db2.DB2UniversalDatabaseImpl</providerClass>
@@ -87,9 +87,9 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>DOPRINOS</name>
+            <name>OBUSTAVA</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>DOPRINOS</name>
+              <name>OBUSTAVA</name>
               <schemaName>COPDB</schemaName>
               <type>TABLE</type>
             </parent>
@@ -119,7 +119,7 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>NAZIV</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>DOPRINOS</name>
+              <name>OBUSTAVA</name>
               <schemaName>COPDB</schemaName>
               <type>TABLE</type>
             </parent>
@@ -129,12 +129,12 @@
       </properties>
     </column>
     <column>
-      <name>PRIMJENA</name>
+      <name>OPIS</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
             <key>size</key>
-            <value class="java.lang.Long">1</value>
+            <value class="java.lang.Long">200</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
@@ -147,9 +147,9 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>PRIMJENA</name>
+            <name>OPIS</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>DOPRINOS</name>
+              <name>OBUSTAVA</name>
               <schemaName>COPDB</schemaName>
               <type>TABLE</type>
             </parent>
@@ -159,7 +159,41 @@
       </properties>
     </column>
     <column>
-      <name>STOPA</name>
+      <name>SALDO</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>precision</key>
+            <value class="java.lang.Long">15</value>
+          </entry>
+          <entry>
+            <key>scale</key>
+            <value class="java.lang.Long">6</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <providerClass>oracle.javatools.db.db2.DB2UniversalDatabaseImpl</providerClass>
+          <typeName>DECIMAL</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>true</notNull>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>SALDO</name>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>OBUSTAVA</name>
+              <schemaName>COPDB</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <type>COLUMN</type>
+          </value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>POSTO</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
@@ -181,9 +215,43 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>STOPA</name>
+            <name>POSTO</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>DOPRINOS</name>
+              <name>OBUSTAVA</name>
+              <schemaName>COPDB</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <type>COLUMN</type>
+          </value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>OSTRATA</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>precision</key>
+            <value class="java.lang.Long">4</value>
+          </entry>
+          <entry>
+            <key>scale</key>
+            <value class="java.lang.Long">0</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <providerClass>oracle.javatools.db.db2.DB2UniversalDatabaseImpl</providerClass>
+          <typeName>DECIMAL</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>OSTRATA</name>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>OBUSTAVA</name>
               <schemaName>COPDB</schemaName>
               <type>TABLE</type>
             </parent>
@@ -217,7 +285,7 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>IZNOS</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>DOPRINOS</name>
+              <name>OBUSTAVA</name>
               <schemaName>COPDB</schemaName>
               <type>TABLE</type>
             </parent>
@@ -226,16 +294,32 @@
         </entry>
       </properties>
     </column>
+    <column>
+      <name>VJEROVNIK</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Long">200</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <providerClass>oracle.javatools.db.db2.DB2UniversalDatabaseImpl</providerClass>
+          <typeName>VARCHAR</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+    </column>
   </columns>
   <constraints>
     <constraint class="oracle.javatools.db.PKConstraint">
-      <name>COPDB#DOPRINOS#PK</name>
+      <name>COPDB#OBUSTAVA#PK</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
           <name>OBRID</name>
           <parent class="oracle.javatools.db.NameBasedID">
-            <name>DOPRINOS</name>
-            <schemaName>COPDB</schemaName>
+            <name>FKCOPOBUSTAVA</name>
+            <schemaName>DBO</schemaName>
             <type>TABLE</type>
           </parent>
           <schemaName>COPDB</schemaName>
@@ -244,8 +328,8 @@
         <columnID class="oracle.javatools.db.NameBasedID">
           <name>RBR</name>
           <parent class="oracle.javatools.db.NameBasedID">
-            <name>DOPRINOS</name>
-            <schemaName>COPDB</schemaName>
+            <name>FKCOPOBUSTAVA</name>
+            <schemaName>DBO</schemaName>
             <type>TABLE</type>
           </parent>
           <schemaName>COPDB</schemaName>
@@ -254,8 +338,8 @@
         <columnID class="oracle.javatools.db.NameBasedID">
           <name>STV</name>
           <parent class="oracle.javatools.db.NameBasedID">
-            <name>DOPRINOS</name>
-            <schemaName>COPDB</schemaName>
+            <name>FKCOPOBUSTAVA</name>
+            <schemaName>DBO</schemaName>
             <type>TABLE</type>
           </parent>
           <schemaName>COPDB</schemaName>
@@ -267,14 +351,14 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>COPDB#DOPRINOS#PK</name>
+            <name>COPDB#OBUSTAVA#PK</name>
             <childObjectNames>
               <childObjectName>OBRID</childObjectName>
               <childObjectName>RBR</childObjectName>
               <childObjectName>STV</childObjectName>
             </childObjectNames>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>DOPRINOS</name>
+              <name>OBUSTAVA</name>
               <schemaName>COPDB</schemaName>
               <type>TABLE</type>
             </parent>
@@ -284,10 +368,46 @@
         </entry>
       </properties>
     </constraint>
+    <constraint class="oracle.javatools.db.PKConstraint">
+      <name>PK_OBRID_RBR_STV</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>OBRID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>FKCOPOBUSTAVA</name>
+            <schemaName>DBO</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>COPDB</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>RBR</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>FKCOPOBUSTAVA</name>
+            <schemaName>DBO</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>COPDB</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>STV</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>FKCOPOBUSTAVA</name>
+            <schemaName>DBO</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>COPDB</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
+    </constraint>
   </constraints>
   <indexes>
     <indexe>
-      <name>DOPRINOS</name>
+      <name>OBUSTAVA</name>
       <columnExpressions>
         <columnExpression>
           <expressionSource>OBRID</expressionSource>
@@ -307,9 +427,9 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>DOPRINOS</name>
+            <name>OBUSTAVA</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>DOPRINOS</name>
+              <name>OBUSTAVA</name>
               <schemaName>COPDB</schemaName>
               <type>TABLE</type>
             </parent>
@@ -319,7 +439,7 @@
         </entry>
       </properties>
       <schema>
-        <name>COPDB</name>
+        <name>DBO</name>
       </schema>
     </indexe>
   </indexes>
@@ -331,7 +451,7 @@
     <entry>
       <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
       <value class="oracle.javatools.db.ReferenceID">
-        <name>DOPRINOS</name>
+        <name>OBUSTAVA</name>
         <schemaName>COPDB</schemaName>
         <type>TABLE</type>
       </value>
@@ -342,6 +462,6 @@
     </entry>
   </properties>
   <schema>
-    <name>COPDB</name>
+    <name>DBO</name>
   </schema>
 </table>

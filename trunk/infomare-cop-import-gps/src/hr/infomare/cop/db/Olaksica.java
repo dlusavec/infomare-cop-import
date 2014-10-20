@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Entity
 @NamedQueries({ @NamedQuery(name = "Olaksica.findAll", query = "select o from Olaksica o") })
 @IdClass(OlaksicaPK.class)
-@Table(schema = "COPDB")
+@Table(schema = "DBO", name = "FKCOPOLAKSICA")
 public class Olaksica implements Serializable {
     private static final long serialVersionUID = -1402920073306529068L;
     @Column(nullable = false)

@@ -1,6 +1,6 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <table xmlns="http://xmlns.oracle.com/jdeveloper/1211/offlinedb">
-  <name>OBRACUN</name>
+  <name>FKCOPOBRACUN</name>
   <columns>
     <column>
       <name>OBRID</name>
@@ -136,8 +136,8 @@
         <columnID class="oracle.javatools.db.NameBasedID">
           <name>OBRID</name>
           <parent class="oracle.javatools.db.NameBasedID">
-            <name>OBRACUN</name>
-            <schemaName>COPDB</schemaName>
+            <name>FKCOPOBRACUN</name>
+            <schemaName>DBO</schemaName>
             <type>TABLE</type>
           </parent>
           <schemaName>COPDB</schemaName>
@@ -191,7 +191,7 @@
         </entry>
       </properties>
       <schema>
-        <name>COPDB</name>
+        <name>DBO</name>
       </schema>
     </indexe>
   </indexes>
@@ -214,6 +214,6 @@
     </entry>
   </properties>
   <schema>
-    <name>COPDB</name>
+    <name>DBO</name>
   </schema>
 </table>

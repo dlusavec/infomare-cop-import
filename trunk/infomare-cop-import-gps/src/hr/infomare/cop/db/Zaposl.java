@@ -19,7 +19,7 @@ import javax.persistence.TemporalType;
 @Entity
 @NamedQueries({ @NamedQuery(name = "Zaposl.findAll", query = "select o from Zaposl o") })
 @IdClass(ZaposlPK.class)
-@Table(schema = "COPDB")
+@Table(schema = "DBO", name = "FKCOPZAPOSL")
 public class Zaposl implements Serializable {
     private static final long serialVersionUID = -2374476838603511025L;
     private String adresa;

@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Entity
 @NamedQueries({ @NamedQuery(name = "Doprinos.findAll", query = "select o from Doprinos o") })
 @IdClass(DoprinosPK.class)
-@Table(schema = "COPDB")
+@Table(schema = "DBO", name = "FKCOPDOPRINOS")
 public class Doprinos implements Serializable {
     private static final long serialVersionUID = 2215706990861538354L;
     @Column(nullable = false)

@@ -63,6 +63,8 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Query;
+
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -439,10 +441,11 @@ public class Forma extends javax.swing.JPanel {
                                                                                                                
                         em.clear();   
                                           
-                }                         
-                em.getTransaction().commit();
-             
-             
+                }
+                Query pozivProcedure = em.createNativeQuery("{call dbo.USP_FK_COP_VEZNE_TABLICE(?)}");
+                pozivProcedure.setParameter(1, iduciId);                                
+                pozivProcedure.executeUpdate();                                
+                em.getTransaction().commit();                          
              
                 System.out.println("kraj");
                 jProgressBar1.repaint();

@@ -130,16 +130,17 @@ public class Forma extends javax.swing.JPanel {
     
              if(status==10) {
                  iduciId=Integer.valueOf(oldID);
-                    em.createQuery("delete from Poduzece p where p.obrid="+Integer.toString(iduciId)).executeUpdate();
-                    em.createQuery("delete from Zaposl p where p.obrid="+Integer.toString(iduciId)).executeUpdate();
-                    em.createQuery("delete from Prihod p where p.obrid="+Integer.toString(iduciId)).executeUpdate();
-                    em.createQuery("delete from Poripri p where p.obrid="+Integer.toString(iduciId)).executeUpdate();
-                    em.createQuery("delete from Obracun p where p.obrid="+Integer.toString(iduciId)).executeUpdate();
-                    em.createQuery("delete from Param p where p.obrid="+Integer.toString(iduciId)).executeUpdate();
                     em.createQuery("delete from Olaksica p where p.obrid="+Integer.toString(iduciId)).executeUpdate();
                     em.createQuery("delete from Doprinos p where p.obrid="+Integer.toString(iduciId)).executeUpdate();
                     em.createQuery("delete from Obustava p where p.obrid="+Integer.toString(iduciId)).executeUpdate();
                     em.createQuery("delete from Zaprac p where p.obrid="+Integer.toString(iduciId)).executeUpdate();
+                    em.createQuery("delete from Prihod p where p.obrid="+Integer.toString(iduciId)).executeUpdate();
+                    em.createQuery("delete from Poripri p where p.obrid="+Integer.toString(iduciId)).executeUpdate();
+                    em.createQuery("delete from Param p where p.obrid="+Integer.toString(iduciId)).executeUpdate();                                                            
+                    em.createQuery("delete from Zaposl p where p.obrid="+Integer.toString(iduciId)).executeUpdate();
+                    em.createQuery("delete from Poduzece p where p.obrid="+Integer.toString(iduciId)).executeUpdate();                    
+                    em.createQuery("delete from Obracun p where p.obrid="+Integer.toString(iduciId)).executeUpdate();                    
+
                 } else {
                     //pronadji iduci ID obracuna
                     iduciId = em.createQuery("select max(O.obrid) FROM Obracun O", Integer.class).getSingleResult();
@@ -443,9 +444,9 @@ public class Forma extends javax.swing.JPanel {
                                           
                 }
                 Query pozivProcedure = em.createNativeQuery("{call dbo.USP_FK_COP_VEZNE_TABLICE(?)}");
-                pozivProcedure.setParameter(1, iduciId);                                
-                pozivProcedure.executeUpdate();                                
-                em.getTransaction().commit();                          
+                pozivProcedure.setParameter(1, iduciId);
+                pozivProcedure.executeUpdate();                                                                                                                           
+                em.getTransaction().commit();                 
              
                 System.out.println("kraj");
                 jProgressBar1.repaint();

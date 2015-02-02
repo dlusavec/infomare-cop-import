@@ -5,18 +5,18 @@ import javax.xml.bind.annotation.XmlRegistry;
 
 
 /**
- * This object contains factory methods for each
- * Java content interface and Java element interface
- * generated in the hr.infomare.cop.jaxb package.
- * <p>An ObjectFactory allows you to programatically
- * construct new instances of the Java representation
- * for XML content. The Java representation of XML
- * content can consist of schema derived interfaces
- * and classes representing the binding of schema
- * type definitions, element declarations and model
- * groups.  Factory methods for each of these are
+ * This object contains factory methods for each 
+ * Java content interface and Java element interface 
+ * generated in the hr.infomare.cop.jaxb package. 
+ * <p>An ObjectFactory allows you to programatically 
+ * construct new instances of the Java representation 
+ * for XML content. The Java representation of XML 
+ * content can consist of schema derived interfaces 
+ * and classes representing the binding of schema 
+ * type definitions, element declarations and model 
+ * groups.  Factory methods for each of these are 
  * provided in this class.
- *
+ * 
  */
 @XmlRegistry
 public class ObjectFactory {
@@ -24,14 +24,14 @@ public class ObjectFactory {
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: hr.infomare.cop.jaxb
-     *
+     * 
      */
     public ObjectFactory() {
     }
 
     /**
      * Create an instance of {@link ParametriObracunaType }
-     *
+     * 
      */
     public ParametriObracunaType createParametriObracunaType() {
         return new ParametriObracunaType();
@@ -39,7 +39,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ZaposlenikType }
-     *
+     * 
      */
     public ZaposlenikType createZaposlenikType() {
         return new ZaposlenikType();
@@ -47,7 +47,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link OpObrasci }
-     *
+     * 
      */
     public OpObrasci createOpObrasci() {
         return new OpObrasci();
@@ -55,7 +55,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link InstitucijaType }
-     *
+     * 
      */
     public InstitucijaType createInstitucijaType() {
         return new InstitucijaType();
@@ -63,7 +63,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link DoprinosNaType }
-     *
+     * 
      */
     public DoprinosNaType createDoprinosNaType() {
         return new DoprinosNaType();
@@ -71,7 +71,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link NeoporeziviPrihodiType }
-     *
+     * 
      */
     public NeoporeziviPrihodiType createNeoporeziviPrihodiType() {
         return new NeoporeziviPrihodiType();
@@ -79,7 +79,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ObustaveType }
-     *
+     * 
      */
     public ObustaveType createObustaveType() {
         return new ObustaveType();
@@ -87,7 +87,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ElementPlace }
-     *
+     * 
      */
     public ElementPlace createElementPlace() {
         return new ElementPlace();
@@ -95,7 +95,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link DoprinosIzType }
-     *
+     * 
      */
     public DoprinosIzType createDoprinosIzType() {
         return new DoprinosIzType();
@@ -103,7 +103,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link OlaksiceType }
-     *
+     * 
      */
     public OlaksiceType createOlaksiceType() {
         return new OlaksiceType();
@@ -111,7 +111,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link BrutoType }
-     *
+     * 
      */
     public BrutoType createBrutoType() {
         return new BrutoType();
@@ -119,7 +119,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link PorezPrirezType }
-     *
+     * 
      */
     public PorezPrirezType createPorezPrirezType() {
         return new PorezPrirezType();
@@ -127,7 +127,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ParametriObracunaType.Period }
-     *
+     * 
      */
     public ParametriObracunaType.Period createParametriObracunaTypePeriod() {
         return new ParametriObracunaType.Period();
@@ -135,7 +135,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ZaposlenikType.RacuniZaposlenika }
-     *
+     * 
      */
     public ZaposlenikType.RacuniZaposlenika createZaposlenikTypeRacuniZaposlenika() {
         return new ZaposlenikType.RacuniZaposlenika();
@@ -143,7 +143,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ZaposlenikType.Bruto }
-     *
+     * 
      */
     public ZaposlenikType.Bruto createZaposlenikTypeBruto() {
         return new ZaposlenikType.Bruto();
@@ -151,7 +151,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ZaposlenikType.DoprinosIzPlace }
-     *
+     * 
      */
     public ZaposlenikType.DoprinosIzPlace createZaposlenikTypeDoprinosIzPlace() {
         return new ZaposlenikType.DoprinosIzPlace();
@@ -159,7 +159,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ZaposlenikType.Olaksice }
-     *
+     * 
      */
     public ZaposlenikType.Olaksice createZaposlenikTypeOlaksice() {
         return new ZaposlenikType.Olaksice();
@@ -167,7 +167,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ZaposlenikType.PorezNaDohodakIPrirez }
-     *
+     * 
      */
     public ZaposlenikType.PorezNaDohodakIPrirez createZaposlenikTypePorezNaDohodakIPrirez() {
         return new ZaposlenikType.PorezNaDohodakIPrirez();
@@ -175,7 +175,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ZaposlenikType.NeoporeziviPrihodi }
-     *
+     * 
      */
     public ZaposlenikType.NeoporeziviPrihodi createZaposlenikTypeNeoporeziviPrihodi() {
         return new ZaposlenikType.NeoporeziviPrihodi();
@@ -183,7 +183,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ZaposlenikType.Obustave }
-     *
+     * 
      */
     public ZaposlenikType.Obustave createZaposlenikTypeObustave() {
         return new ZaposlenikType.Obustave();
@@ -191,7 +191,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ZaposlenikType.DoprinosNaPlacu }
-     *
+     * 
      */
     public ZaposlenikType.DoprinosNaPlacu createZaposlenikTypeDoprinosNaPlacu() {
         return new ZaposlenikType.DoprinosNaPlacu();

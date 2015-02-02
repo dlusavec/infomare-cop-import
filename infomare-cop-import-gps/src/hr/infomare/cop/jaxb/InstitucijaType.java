@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="oib" type="{http://www.fina.hr/cop/opobrazac/v0.5}oibType"/>
+ *         &lt;element name="oib" type="{http://www.fina.hr/cop/opobrazac/v0.6}oibType"/>
  *         &lt;element name="naziv">
  *           &lt;simpleType>
  *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
@@ -37,8 +37,8 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;/restriction>
  *           &lt;/simpleType>
  *         &lt;/element>
- *         &lt;element name="razdobljePocetak" type="{http://www.fina.hr/cop/opobrazac/v0.5}datumType"/>
- *         &lt;element name="razdobljeZavrsetak" type="{http://www.fina.hr/cop/opobrazac/v0.5}datumType"/>
+ *         &lt;element name="razdobljePocetak" type="{http://www.fina.hr/cop/opobrazac/v0.6}datumType"/>
+ *         &lt;element name="razdobljeZavrsetak" type="{http://www.fina.hr/cop/opobrazac/v0.6}datumType"/>
  *         &lt;element name="mjBrSati">
  *           &lt;simpleType>
  *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}int">
@@ -48,7 +48,7 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;/restriction>
  *           &lt;/simpleType>
  *         &lt;/element>
- *         &lt;element name="datumObracuna" type="{http://www.fina.hr/cop/opobrazac/v0.5}datumType"/>
+ *         &lt;element name="datumObracuna" type="{http://www.fina.hr/cop/opobrazac/v0.6}datumType" minOccurs="0"/>
  *         &lt;element name="isplata">
  *           &lt;simpleType>
  *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}boolean">
@@ -56,7 +56,7 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;/restriction>
  *           &lt;/simpleType>
  *         &lt;/element>
- *         &lt;element name="brRacInst" type="{http://www.fina.hr/cop/opobrazac/v0.5}brojRacunaType" minOccurs="0"/>
+ *         &lt;element name="brRacInst" type="{http://www.fina.hr/cop/opobrazac/v0.6}brojRacunaType" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -83,7 +83,6 @@ public class InstitucijaType {
     @XmlElement(required = true)
     protected String razdobljeZavrsetak;
     protected int mjBrSati;
-    @XmlElement(required = true)
     protected String datumObracuna;
     protected boolean isplata;
     protected String brRacInst;

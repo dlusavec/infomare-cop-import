@@ -34,8 +34,8 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="datumOd" type="{http://www.fina.hr/cop/opobrazac/v0.5}datumShortType"/>
- *                   &lt;element name="datumDo" type="{http://www.fina.hr/cop/opobrazac/v0.5}datumShortType"/>
+ *                   &lt;element name="datumOd" type="{http://www.fina.hr/cop/opobrazac/v0.6}datumShortType"/>
+ *                   &lt;element name="datumDo" type="{http://www.fina.hr/cop/opobrazac/v0.6}datumShortType"/>
  *                   &lt;element name="opis" minOccurs="0">
  *                     &lt;simpleType>
  *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
@@ -131,8 +131,8 @@ public class ParametriObracunaType {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="datumOd" type="{http://www.fina.hr/cop/opobrazac/v0.5}datumShortType"/>
-     *         &lt;element name="datumDo" type="{http://www.fina.hr/cop/opobrazac/v0.5}datumShortType"/>
+     *         &lt;element name="datumOd" type="{http://www.fina.hr/cop/opobrazac/v0.6}datumShortType"/>
+     *         &lt;element name="datumDo" type="{http://www.fina.hr/cop/opobrazac/v0.6}datumShortType"/>
      *         &lt;element name="opis" minOccurs="0">
      *           &lt;simpleType>
      *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">

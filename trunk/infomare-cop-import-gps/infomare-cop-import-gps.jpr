@@ -132,6 +132,10 @@
             <url n="id" path="../../../../Users/damirl/AppData/Roaming/JDeveloper/system12.1.2.0.40.66.68/o.jdeveloper/SQLSERVER_JDBC.library"/>
             <value n="isJDK" v="false"/>
          </hash>
+         <hash>
+            <value n="id" v="Oracle XML Parser v2"/>
+            <value n="isJDK" v="false"/>
+         </hash>
       </list>
       <list n="libraryReferences">
          <hash>
@@ -144,6 +148,10 @@
          </hash>
          <hash>
             <url n="id" path="../../../../Users/damirl/AppData/Roaming/JDeveloper/system12.1.2.0.40.66.68/o.jdeveloper/SQLSERVER_JDBC.library"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Oracle XML Parser v2"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>

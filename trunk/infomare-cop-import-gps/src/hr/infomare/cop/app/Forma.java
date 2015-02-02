@@ -182,7 +182,13 @@ public class Forma extends javax.swing.JPanel {
                 poduzece.setPeriodod(df.parse(xmlPoslodavac.getRazdobljePocetak()));
                 poduzece.setPerioddo(df.parse(xmlPoslodavac.getRazdobljeZavrsetak()));
                 poduzece.setFondsati(xmlPoslodavac.getMjBrSati());                
-                poduzece.setDatumobr(df.parse(xmlPoslodavac.getDatumObracuna()));
+                /**
+                  *     Od verzije 0.6 datum obraèuna je neobavezno polje.
+                * */
+                //poduzece.setDatumobr(df.parse(xmlPoslodavac.getDatumObracuna()));
+                poduzece.setDatumobr(df.parse(xmlPoslodavac.getDatumObracuna() == null ?
+                                              xmlPoslodavac.getRazdobljeZavrsetak() :
+                                              xmlPoslodavac.getDatumObracuna()));
                 if(xmlPoslodavac.isIsplata())
                       poduzece.setIsplata("1"); // 1- da
                 else poduzece.setIsplata("0");  // 0- ne

@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="elementPlace" type="{http://www.fina.hr/cop/opobrazac/v0.4}elementPlace"/>
+ *         &lt;element name="elementPlace" type="{http://www.fina.hr/cop/opobrazac/v0.6}elementPlace"/>
  *         &lt;element name="internaOznakaUJ" minOccurs="0">
  *           &lt;simpleType>
  *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
@@ -50,9 +50,9 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;/restriction>
  *           &lt;/simpleType>
  *         &lt;/element>
- *         &lt;element name="koeficijent" type="{http://www.fina.hr/cop/opobrazac/v0.4}koeficijentType"/>
- *         &lt;element name="osnovica" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType" minOccurs="0"/>
- *         &lt;element name="iznos" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType"/>
+ *         &lt;element name="koeficijent" type="{http://www.fina.hr/cop/opobrazac/v0.6}koeficijentType"/>
+ *         &lt;element name="osnovica" type="{http://www.fina.hr/cop/opobrazac/v0.6}iznosType" minOccurs="0"/>
+ *         &lt;element name="iznos" type="{http://www.fina.hr/cop/opobrazac/v0.6}iznosType"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

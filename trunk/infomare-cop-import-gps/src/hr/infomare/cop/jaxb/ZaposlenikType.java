@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="oib" type="{http://www.fina.hr/cop/opobrazac/v0.4}oibType"/>
+ *         &lt;element name="oib" type="{http://www.fina.hr/cop/opobrazac/v0.6}oibType"/>
  *         &lt;element name="ime">
  *           &lt;simpleType>
  *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
@@ -54,7 +54,7 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="brRacZap" type="{http://www.fina.hr/cop/opobrazac/v0.4}brojRacunaType"/>
+ *                   &lt;element name="brRacZap" type="{http://www.fina.hr/cop/opobrazac/v0.6}brojRacunaType"/>
  *                   &lt;element name="racunBanka">
  *                     &lt;simpleType>
  *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
@@ -63,7 +63,7 @@ import javax.xml.bind.annotation.XmlType;
  *                       &lt;/restriction>
  *                     &lt;/simpleType>
  *                   &lt;/element>
- *                   &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType" minOccurs="0"/>
+ *                   &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.6}iznosType" minOccurs="0"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
  *             &lt;/complexContent>
@@ -87,15 +87,15 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;/restriction>
  *           &lt;/simpleType>
  *         &lt;/element>
- *         &lt;element name="datumIsplate" type="{http://www.fina.hr/cop/opobrazac/v0.4}datumType" minOccurs="0"/>
- *         &lt;element name="parametriObracuna" type="{http://www.fina.hr/cop/opobrazac/v0.4}parametriObracunaType" maxOccurs="unbounded"/>
+ *         &lt;element name="datumIsplate" type="{http://www.fina.hr/cop/opobrazac/v0.6}datumType" minOccurs="0"/>
+ *         &lt;element name="parametriObracuna" type="{http://www.fina.hr/cop/opobrazac/v0.6}parametriObracunaType" maxOccurs="unbounded"/>
  *         &lt;element name="bruto">
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="elementBrutoPlace" type="{http://www.fina.hr/cop/opobrazac/v0.4}brutoType" maxOccurs="unbounded" minOccurs="0"/>
- *                   &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType"/>
+ *                   &lt;element name="elementBrutoPlace" type="{http://www.fina.hr/cop/opobrazac/v0.6}brutoType" maxOccurs="unbounded" minOccurs="0"/>
+ *                   &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.6}iznosType"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
  *             &lt;/complexContent>
@@ -106,80 +106,80 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="elementDoprinosIz" type="{http://www.fina.hr/cop/opobrazac/v0.4}doprinosIzType" maxOccurs="unbounded" minOccurs="0"/>
- *                   &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType"/>
+ *                   &lt;element name="elementDoprinosIz" type="{http://www.fina.hr/cop/opobrazac/v0.6}doprinosIzType" maxOccurs="unbounded" minOccurs="0"/>
+ *                   &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.6}iznosType"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
- *         &lt;element name="dohodak" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType"/>
+ *         &lt;element name="dohodak" type="{http://www.fina.hr/cop/opobrazac/v0.6}iznosType"/>
  *         &lt;element name="olaksice">
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="elementOlaksice" type="{http://www.fina.hr/cop/opobrazac/v0.4}olaksiceType" maxOccurs="unbounded" minOccurs="0"/>
- *                   &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType"/>
+ *                   &lt;element name="elementOlaksice" type="{http://www.fina.hr/cop/opobrazac/v0.6}olaksiceType" maxOccurs="unbounded" minOccurs="0"/>
+ *                   &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.6}iznosType"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
- *         &lt;element name="poreznaOsnovica" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType"/>
+ *         &lt;element name="poreznaOsnovica" type="{http://www.fina.hr/cop/opobrazac/v0.6}iznosType"/>
  *         &lt;element name="porezNaDohodakIPrirez">
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="elementPorezPrirez" type="{http://www.fina.hr/cop/opobrazac/v0.4}porezPrirezType" maxOccurs="unbounded" minOccurs="0"/>
- *                   &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType"/>
+ *                   &lt;element name="elementPorezPrirez" type="{http://www.fina.hr/cop/opobrazac/v0.6}porezPrirezType" maxOccurs="unbounded" minOccurs="0"/>
+ *                   &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.6}iznosType"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
- *         &lt;element name="neto" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType"/>
+ *         &lt;element name="neto" type="{http://www.fina.hr/cop/opobrazac/v0.6}iznosType"/>
  *         &lt;element name="neoporeziviPrihodi">
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="elementNeoporezPrih" type="{http://www.fina.hr/cop/opobrazac/v0.4}neoporeziviPrihodiType" maxOccurs="unbounded" minOccurs="0"/>
- *                   &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType"/>
+ *                   &lt;element name="elementNeoporezPrih" type="{http://www.fina.hr/cop/opobrazac/v0.6}neoporeziviPrihodiType" maxOccurs="unbounded" minOccurs="0"/>
+ *                   &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.6}iznosType"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
- *         &lt;element name="ukPrimanja" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType"/>
+ *         &lt;element name="ukPrimanja" type="{http://www.fina.hr/cop/opobrazac/v0.6}iznosType"/>
  *         &lt;element name="obustave">
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="elementObustave" type="{http://www.fina.hr/cop/opobrazac/v0.4}obustaveType" maxOccurs="unbounded" minOccurs="0"/>
- *                   &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType"/>
+ *                   &lt;element name="elementObustave" type="{http://www.fina.hr/cop/opobrazac/v0.6}obustaveType" maxOccurs="unbounded" minOccurs="0"/>
+ *                   &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.6}iznosType"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
- *         &lt;element name="iznosZaisplatu" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType"/>
- *         &lt;element name="iznosZaIsplatuRazlika" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosNegPozType" minOccurs="0"/>
+ *         &lt;element name="iznosZaisplatu" type="{http://www.fina.hr/cop/opobrazac/v0.6}iznosType"/>
+ *         &lt;element name="iznosZaIsplatuRazlika" type="{http://www.fina.hr/cop/opobrazac/v0.6}iznosNegPozType" minOccurs="0"/>
  *         &lt;element name="doprinosNaPlacu">
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="elementDoprinosNa" type="{http://www.fina.hr/cop/opobrazac/v0.4}doprinosNaType" maxOccurs="unbounded" minOccurs="0"/>
- *                   &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType"/>
+ *                   &lt;element name="elementDoprinosNa" type="{http://www.fina.hr/cop/opobrazac/v0.6}doprinosNaType" maxOccurs="unbounded" minOccurs="0"/>
+ *                   &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.6}iznosType"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
- *         &lt;element name="ukTrosakPlace" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType"/>
+ *         &lt;element name="ukTrosakPlace" type="{http://www.fina.hr/cop/opobrazac/v0.6}iznosType"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -811,8 +811,8 @@ public class ZaposlenikType {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="elementBrutoPlace" type="{http://www.fina.hr/cop/opobrazac/v0.4}brutoType" maxOccurs="unbounded" minOccurs="0"/>
-     *         &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType"/>
+     *         &lt;element name="elementBrutoPlace" type="{http://www.fina.hr/cop/opobrazac/v0.6}brutoType" maxOccurs="unbounded" minOccurs="0"/>
+     *         &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.6}iznosType"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -895,8 +895,8 @@ public class ZaposlenikType {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="elementDoprinosIz" type="{http://www.fina.hr/cop/opobrazac/v0.4}doprinosIzType" maxOccurs="unbounded" minOccurs="0"/>
-     *         &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType"/>
+     *         &lt;element name="elementDoprinosIz" type="{http://www.fina.hr/cop/opobrazac/v0.6}doprinosIzType" maxOccurs="unbounded" minOccurs="0"/>
+     *         &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.6}iznosType"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -979,8 +979,8 @@ public class ZaposlenikType {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="elementDoprinosNa" type="{http://www.fina.hr/cop/opobrazac/v0.4}doprinosNaType" maxOccurs="unbounded" minOccurs="0"/>
-     *         &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType"/>
+     *         &lt;element name="elementDoprinosNa" type="{http://www.fina.hr/cop/opobrazac/v0.6}doprinosNaType" maxOccurs="unbounded" minOccurs="0"/>
+     *         &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.6}iznosType"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -1063,8 +1063,8 @@ public class ZaposlenikType {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="elementNeoporezPrih" type="{http://www.fina.hr/cop/opobrazac/v0.4}neoporeziviPrihodiType" maxOccurs="unbounded" minOccurs="0"/>
-     *         &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType"/>
+     *         &lt;element name="elementNeoporezPrih" type="{http://www.fina.hr/cop/opobrazac/v0.6}neoporeziviPrihodiType" maxOccurs="unbounded" minOccurs="0"/>
+     *         &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.6}iznosType"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -1147,8 +1147,8 @@ public class ZaposlenikType {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="elementObustave" type="{http://www.fina.hr/cop/opobrazac/v0.4}obustaveType" maxOccurs="unbounded" minOccurs="0"/>
-     *         &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType"/>
+     *         &lt;element name="elementObustave" type="{http://www.fina.hr/cop/opobrazac/v0.6}obustaveType" maxOccurs="unbounded" minOccurs="0"/>
+     *         &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.6}iznosType"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -1231,8 +1231,8 @@ public class ZaposlenikType {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="elementOlaksice" type="{http://www.fina.hr/cop/opobrazac/v0.4}olaksiceType" maxOccurs="unbounded" minOccurs="0"/>
-     *         &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType"/>
+     *         &lt;element name="elementOlaksice" type="{http://www.fina.hr/cop/opobrazac/v0.6}olaksiceType" maxOccurs="unbounded" minOccurs="0"/>
+     *         &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.6}iznosType"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -1315,8 +1315,8 @@ public class ZaposlenikType {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="elementPorezPrirez" type="{http://www.fina.hr/cop/opobrazac/v0.4}porezPrirezType" maxOccurs="unbounded" minOccurs="0"/>
-     *         &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType"/>
+     *         &lt;element name="elementPorezPrirez" type="{http://www.fina.hr/cop/opobrazac/v0.6}porezPrirezType" maxOccurs="unbounded" minOccurs="0"/>
+     *         &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.6}iznosType"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -1399,7 +1399,7 @@ public class ZaposlenikType {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="brRacZap" type="{http://www.fina.hr/cop/opobrazac/v0.4}brojRacunaType"/>
+     *         &lt;element name="brRacZap" type="{http://www.fina.hr/cop/opobrazac/v0.6}brojRacunaType"/>
      *         &lt;element name="racunBanka">
      *           &lt;simpleType>
      *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
@@ -1408,7 +1408,7 @@ public class ZaposlenikType {
      *             &lt;/restriction>
      *           &lt;/simpleType>
      *         &lt;/element>
-     *         &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.4}iznosType" minOccurs="0"/>
+     *         &lt;element name="ukIznos" type="{http://www.fina.hr/cop/opobrazac/v0.6}iznosType" minOccurs="0"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
